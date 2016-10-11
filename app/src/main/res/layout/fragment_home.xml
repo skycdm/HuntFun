@@ -1,12 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff0000"
-    android:id="@+id/my_home"
-    android:text="首页"
-    />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#edeaea"
+    android:weightSum="1">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#17cdf5">
+
+        <!--自定义控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="猎趣"
+            android:textSize="25sp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-苏州-"
+            android:textSize="25sp"
+            android:layout_gravity="left"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search"
+            android:layout_gravity="right"
+            android:paddingRight="5dp"
+            />
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <com.jude.rollviewpager.RollPagerView
+        android:id="@+id/roll_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:rollviewpager_play_delay="3000"/>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:id="@+id/gridView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.55" />
+
+
 </LinearLayout>

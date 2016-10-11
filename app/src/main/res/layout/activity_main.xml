@@ -33,29 +33,35 @@
             android:layout_gravity="center_horizontal|bottom"
             android:layout_below="@+id/fram"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-            <RadioButton
-                style="@style/style"
-                android:id="@+id/tuijian"
-                android:drawableTop="@drawable/tuijian_selector"
-                android:text="推 荐"
-                />
+            android:layout_alignParentStart="true"
+            android:background="#fff">
             <RadioButton
                 style="@style/style"
                 android:checked="true"
                 android:id="@+id/shouye"
                 android:drawableTop="@drawable/home_selector"
-                android:text="首 页"
+                android:textColor="@drawable/font_color"
+                android:text="推 荐"
                 />
+            <RadioButton
+                style="@style/style"
+                android:id="@+id/tuijian"
+                android:drawableTop="@drawable/tuijian_selector"
+                android:textColor="@drawable/font_color"
+                android:text="活 动"
+                />
+
             <RadioButton
                 style="@style/style"
                 android:id="@+id/xiaoxi"
                 android:drawableTop="@drawable/xiaoxi_selector"
+                android:textColor="@drawable/font_color"
                 android:text="消 息"
                 />
             <RadioButton
                 style="@style/style"
                 android:id="@+id/mine"
+                android:textColor="@drawable/font_color"
                 android:drawableTop="@drawable/mine_selector"
                 android:text="我 的"
                 />
