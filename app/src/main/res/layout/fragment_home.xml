@@ -43,12 +43,17 @@
         android:layout_height="180dp"
         app:rollviewpager_play_delay="3000"/>
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="209dp"
-        android:id="@+id/gridView"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.55" />
+   <com.example.cdm.huntfun.application.HVListview
+       android:id="@+id/hv_list"
+       android:background="#FFB84D"
+       android:fastScrollEnabled="true"
+       android:fadingEdgeLength="0.0sp"
+       android:layout_width="1400.0dip"
+       android:layout_height="135dp"
+       android:drawSelectorOnTop="false"
+       android:cacheColorHint="@null"
+       android:dividerHeight="1.0dip">
+   </com.example.cdm.huntfun.application.HVListview>
 
 
 </LinearLayout>
