@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         initview();
-
         initdate();
 
     }
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initdate() {
-        list_view.setAdapter(new ArrayAdapter(getApplicationContext(),R.layout.drawer_layout,
+        list_view.setAdapter(new ArrayAdapter(this,R.layout.drawer_layout,
                 R.id.text_view,new String[]{"item1","item2","item3"}
         ));
 
