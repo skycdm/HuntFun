@@ -1,11 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff0000"
-    android:text="推荐"
-    />
-</LinearLayout>
+    android:background="#fff">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#33CCFF">
+        <ImageView
+            android:id="@+id/iv_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bank_48"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="猎趣"
+            android:textSize="20sp"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <RelativeLayout
+            android:id="@+id/rel_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp">
+            <ImageView
+                android:id="@+id/iv_publish"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/fabu1"
+                android:layout_marginTop="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="---发布活动-------------------------宅在在家里快发霉了~~何不呼朋引伴？篮球，足球，电竞，手工制作，美食够你嗨的！----------------------------------"
+                android:layout_toRightOf="@+id/iv_publish"
+                android:textSize="14sp"
+                android:textColor="#000"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp">
+            <ImageView
+                android:id="@+id/iv_manage"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/guanli"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="---管理活动--------------------------
+----------------------------------------------你的所有活动现在归我管，点击这里管理活动
+---------------------------------------------"
+                android:layout_toRightOf="@+id/iv_manage"
+                android:textSize="14sp"
+                android:textColor="#000"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp">
+            <ImageView
+                android:id="@+id/iv_apply"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/shenqing"
+                android:layout_marginTop="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="---申请成为发布人------------
+------------------------------------
+想做猎人还是猎物？想要火药还是利爪？点击这里申请成为发布者，我们给你想要的！------------------------------------"
+                android:layout_toRightOf="@+id/iv_apply"
+                android:textSize="14sp"
+                android:textColor="#000"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

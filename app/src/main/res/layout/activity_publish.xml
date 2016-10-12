@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.example.cdm.huntfun.activity.PublishActivity">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#4ABDCC">
+        <ImageView
+            android:id="@+id/iv_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bank_48"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+            <Button
+                android:id="@+id/btn_publish_frg"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_back_img_selector"
+                android:paddingBottom="2dip"
+                android:paddingTop="7dip"
+                android:text="发布活动"
+                android:textColor="@drawable/publish_btn_text_color"
+                android:textSize="18sp"
+                android:gravity="center"/>
+            <Button
+                android:id="@+id/btn_caogao_frg"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_back_img_selector"
+                android:paddingBottom="2dip"
+                android:paddingTop="7dip"
+                android:text="草稿箱"
+                android:textColor="@drawable/publish_btn_text_color"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="发布"/>
+
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/frag"
+        android:layout_below="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</RelativeLayout>
