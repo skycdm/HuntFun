@@ -9,7 +9,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:background="#17cdf5">
 
         <!--自定义控件-->
@@ -43,6 +43,16 @@
         android:layout_height="180dp"
         app:rollviewpager_play_delay="3000"/>
 
+
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  重 磅 推 荐"
+        android:textSize="18sp"
+        android:textColor="#747171"/>
+
     <com.example.cdm.huntfun.application.HVListview
         android:id="@+id/hv_list"
         android:background="#faf9f8"
@@ -55,6 +65,5 @@
         android:cacheColorHint="@null"
         android:dividerHeight="1.0dip">
     </com.example.cdm.huntfun.application.HVListview>
-
 
 </LinearLayout>
