@@ -1,14 +1,17 @@
 package com.example.cdm.huntfun.activity.fragment;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +23,10 @@ import android.widget.TextView;
 
 import com.example.cdm.huntfun.DatePickActivity;
 import com.example.cdm.huntfun.R;
+import com.example.cdm.huntfun.activity.fragment.child.CostActivity;
+import com.example.cdm.huntfun.activity.fragment.child.GatherActivity;
+import com.example.cdm.huntfun.activity.fragment.child.PeopleNumberActivity;
+import com.example.cdm.huntfun.activity.fragment.child.PhoneActivity;
 import com.example.cdm.huntfun.util.NetUtil;
 
 import org.xutils.common.Callback;
@@ -361,14 +368,52 @@ public class FragmentPublish extends Fragment {
                 startActivityForResult(intent3, 3);
                 break;
             case R.id.iv_fm:
+                //选择封面
+                new AlertDialog.Builder(getActivity()).setTitle("选择").setItems(items, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+
+                        switch (which) {
+                            case 0:
+
+                                //相册选择
+                                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                                        "image/*");
+                                startActivityForResult(intent, SELECT_PIC);
+                                break;
+
+
+                            case 1:
+
+                                //拍照:
+                                Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                                intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+                                startActivityForResult(intent2, TAKE_PHOTO);
+
+                                break;
+                        }
+                    }
+                }).show();
                 break;
             case R.id.tv_jihe:
+                Intent intentjh = new Intent(getActivity(), GatherActivity.class);
+                startActivityForResult(intentjh, 91);
                 break;
             case R.id.tv_renshu:
+                Intent intentrs = new Intent(getActivity(), PeopleNumberActivity.class);
+                startActivityForResult(intentrs, 94);
                 break;
             case R.id.tv_dianhua:
+                Intent intentdh = new Intent(getActivity(), PhoneActivity.class);
+                startActivityForResult(intentdh, 95);
                 break;
             case R.id.tv_feiyong:
+                Intent intentfy = new Intent(getActivity(), CostActivity.class);
+                startActivityForResult(intentfy, 93);
                 break;
         }
     }

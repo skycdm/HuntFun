@@ -30,8 +30,17 @@
         <activity
             android:name=".next.OrderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".DatePickActivity"
-            android:theme="@style/MyDialogStyleBottom"></activity>
+        <activity
+            android:name=".DatePickActivity"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity android:name=".activity.fragment.child.GatherActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.fragment.child.CostActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.fragment.child.PeopleNumberActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.fragment.child.PhoneActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>
