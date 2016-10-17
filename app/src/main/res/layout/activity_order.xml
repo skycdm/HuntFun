@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cdm.huntfun.next.OrderActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#17cdf5">
+
+        <!--自定义控件-->tex<ImageView
+        android:id="@+id/iv_back1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/white"
+        android:layout_gravity="left"
+        android:paddingRight="5dp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="填写预约信息"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:layout_marginLeft="35dp"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:background="#fff"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/relative1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/zz"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relative2"
+                android:layout_below="@id/relative1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#696666"
+                    android:text="   体验日期"/>
+                <TextView
+                    android:id="@+id/tv_order_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#696767"
+                    android:text="2016-10-11"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="240dp"
+                    />
+            </RelativeLayout>
+            <View
+                style="@style/bg_line"
+                android:layout_marginTop="10dp"
+                android:id="@+id/id_prod_list_sort_line1"
+                android:layout_below="@id/relative2"/>
+            <RelativeLayout
+                android:id="@+id/relative3"
+                android:layout_below="@id/relative2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/tv_theme"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#696666"
+                    android:text="   预约数量"/>
+                <Button
+                    android:id="@+id/cart_item_jian"
+                    android:layout_marginLeft="210dp"
+                    android:focusable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:background="@null"
+                    android:textColor="#0157D3"
+                    android:textSize="24sp"
+                    android:text="-"
+                    android:layout_marginTop="14dp"
+                    />
+                <TextView
+                    android:id="@+id/order_item_number"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="#e41515"
+                    android:layout_marginLeft="300dp"
+
+                    />
+                <Button
+                    android:id="@+id/cart_item_jia"
+                    android:layout_marginTop="14dp"
+                    android:focusable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:layout_marginLeft="320dp"
+                    android:background="@null"
+                    android:textColor="#0157D3"
+                    android:textSize="20sp"
+                    android:text="+"/>
+            </RelativeLayout>
+            <View
+                style="@style/bg_line"
+                android:layout_marginTop="10dp"
+                android:id="@+id/id_prod_list_sort_line2"
+                android:layout_below="@id/relative3"/>
+
+            <RelativeLayout
+                android:id="@+id/relative4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative3">
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#696666"
+                    android:text="   联系人信息"/>
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/relative5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative4">
+                <TextView
+                    android:layout_marginTop="18dp"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#949090"
+                    android:text="   姓名"/>
+                <EditText
+                    android:layout_marginLeft="100dp"
+                    android:id="@+id/et_name"
+                    android:hint="您的姓名"
+                    android:textColorHint="#c1bcbc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative6"
+                android:layout_below="@id/relative5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="18dp"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#949090"
+                    android:text="   手机号"/>
+                <EditText
+                    android:layout_marginLeft="100dp"
+                    android:id="@+id/et_phoneNumber"
+                    android:hint="接受预约的手机号"
+                    android:textColorHint="#c1bcbc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#FFF5A606"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:id="@+id/tv_shifu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实付:"
+            android:textColor="#fff"/>
+        <TextView
+            android:id="@+id/tv_order_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:text=" ￥ 120"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 提 交 预 约 "
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:layout_marginLeft="180dp"/>
+    </android.support.v7.widget.Toolbar>
+</RelativeLayout>

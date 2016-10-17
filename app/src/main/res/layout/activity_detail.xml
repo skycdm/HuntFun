@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cdm.huntfun.next.Detail">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#17cdf5">
+
+        <!--自定义控件-->tex<ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/white"
+        android:layout_gravity="left"
+        android:paddingRight="5dp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="活动详情"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:layout_marginLeft="35dp"
+            />
+
+        <ImageButton
+            android:id="@+id/shou_c"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shou_cang"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:paddingRight="5dp"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:background="#fff"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+               android:id="@+id/relative1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp"
+                    android:src="@drawable/zz"/>
+            </RelativeLayout>
+             <RelativeLayout
+                 android:id="@+id/relative2"
+                 android:layout_below="@id/relative1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                 <TextView
+                     android:id="@+id/tv_theme"
+                     android:layout_width="220dp"
+                     android:layout_height="wrap_content"
+                     android:textSize="25sp"
+                     android:textColor="#000"
+                     android:text="aaaaaaaaaaaaaaaaaa"/>
+             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relative3"
+                android:layout_below="@id/relative2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:text="  开始时间  "/>
+
+                <TextView
+                    android:id="@+id/kai_shi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginLeft="70dp"
+                    android:textColor="#000"
+                    android:text="2016-10-18"/>
+
+                <TextView
+                    android:textColor="#000"
+                    android:id="@+id/iv_ycj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/kai_shi"
+                    android:text="  已参加: "/>
+
+                <TextView
+                    android:id="@+id/tv_yicanjia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:layout_below="@id/kai_shi"
+                    android:layout_marginLeft="56dp"
+                    android:textColor="#2ae7ae"/>
+
+                <TextView
+                    android:id="@+id/tv_zg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总共"
+                    android:textColor="#000"
+                    android:layout_below="@id/kai_shi"
+                    android:layout_marginLeft="85dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_zong_gong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:layout_below="@id/kai_shi"
+                    android:layout_marginLeft="120dp"
+                    android:textColor="#f1af08"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_desc_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ￥ 20"
+                    android:layout_below="@id/tv_zong_gong"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="300dp"
+                    android:textColor="#f22b11"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_zong_gong"
+                    android:textColor="#000"
+                    android:text="  活动地点:"/>
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_zong_gong"
+                    android:textColor="#000"
+                    android:layout_marginLeft="70dp"
+                    android:text="天安门广场"/>
+            </RelativeLayout>
+            <View
+                style="@style/bg_line"
+                android:id="@+id/id_prod_list_sort_line2"
+                android:layout_below="@id/relative3"/>
+
+            <RelativeLayout
+                android:id="@+id/relative4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 活 动 详 情"
+                    android:layout_marginTop="15dp"
+                    android:textColor="#747373"
+                    android:textSize="19sp"/>
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:textSize="17dp"
+                    android:textColor="#7b7979"
+                    android:layout_marginTop="40dp"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    />
+            </RelativeLayout>
+
+            <View
+                style="@style/bg_line"
+                android:id="@+id/id_prod_list_sort_line3"
+                android:layout_below="@id/relative4"/>
+
+            <RelativeLayout
+                android:id="@+id/relative5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative4">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 注 意 事 项 "
+                    android:layout_marginTop="15dp"
+                    android:textColor="#6c6b6b"
+                    android:textSize="19sp"/>
+                <TextView
+                    android:id="@+id/tv_care_desc"
+                    android:textSize="17dp"
+                    android:textColor="#8e8b8b"
+                    android:layout_marginTop="40dp"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    />
+            </RelativeLayout>
+            <View
+                style="@style/bg_line"
+                android:id="@+id/id_prod_list_sort_line4"
+                android:layout_below="@id/relative5"/>
+            <RelativeLayout
+                android:id="@+id/relative6"
+                android:layout_below="@id/relative5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/iv_tou_xiang"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_marginLeft="185dp"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relative7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative6">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 联系猎人 "
+                        android:layout_marginBottom="70dp"
+                        android:textSize="21sp"
+                        android:background="@drawable/set_lianxi"
+                        android:textColor="#f5a606"
+                        android:layout_marginLeft="174dp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#FFF5A606"
+        android:layout_alignParentBottom="true"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_desc_price1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  ￥ 20 "
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:layout_marginLeft="35dp"
+            />
+
+       <Button
+           android:id="@+id/li_ji"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text=" 立 即 约 TA"
+           android:textColor="#fff"
+           android:textSize="21sp"
+           android:background="@null"
+           android:layout_marginLeft="165dp"/>
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+
+
+
+
+</RelativeLayout>

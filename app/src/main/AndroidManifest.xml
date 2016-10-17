@@ -24,7 +24,10 @@
         <activity
             android:name=".activity.PublishActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".next.Detail"></activity>
+        <activity
+            android:name=".next.Detail"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".next.OrderActivity" android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>
