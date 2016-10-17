@@ -27,7 +27,11 @@
         <activity
             android:name=".next.Detail"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".next.OrderActivity" android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".next.OrderActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".DatePickActivity"
+            android:theme="@style/MyDialogStyleBottom"></activity>
     </application>
 
 </manifest>
