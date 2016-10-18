@@ -410,8 +410,8 @@ public class FragmentPublish extends Fragment {
         String activityDesc = edtDetail.getText().toString();
         String activityCare = edtCare.getText().toString();
         String activityImgurl="uploadFm/"+file.getName();
-        Double activityCost=Double.parseDouble(t3.getText().toString());
-        Integer activityMaxPeopleNumber=Integer.parseInt(t4.getText().toString());
+        Double activityCost=Double.parseDouble((t3.getText().toString()).equals("未填写")?"0":t3.getText().toString());
+        Integer activityMaxPeopleNumber=Integer.parseInt((t4.getText().toString()).equals("未填写")?"0":t4.getText().toString());
         String activityTrip=t2.getText().toString();
         String gather=t1.getText().toString();
         String phone=t5.getText().toString();

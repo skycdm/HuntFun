@@ -58,6 +58,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tv_activity_theme"
             android:layout_marginLeft="20dp"
+            android:inputType="number"
             android:background="@null"
             android:hint="请输入联系方式"
             android:gravity="center"
