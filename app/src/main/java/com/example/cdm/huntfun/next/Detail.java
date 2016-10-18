@@ -91,8 +91,7 @@ public class Detail extends AppCompatActivity {
         activity=intent.getParcelableExtra("activity");
         x.image().bind(iv_desc, NetUtil.url+activity.getActivityImgurl());
         tv_theme.setText(activity.getActivityTheme());
-        kai_shi.setText(activity.getActivityBegintime()+"");
-        tv_zong_gong.setText(activity.getActivityPeopleNumber()+"");
+        kai_shi.setText(activity.getActivityBeginTime()+"");
         tv_desc_price.setText(" ￥ "+activity.getActivityCost());
         tv_address.setText(activity.getActivityAddress());
         tv_desc.setText(activity.getActivityDesc());

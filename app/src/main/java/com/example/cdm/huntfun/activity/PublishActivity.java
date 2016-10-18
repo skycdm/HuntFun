@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.cdm.huntfun.R;
 import com.example.cdm.huntfun.activity.fragment.FragmentCaogao;
@@ -23,6 +24,8 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
     int newIndex;//用户即将看到的item
     private Button btn_caogao_frg;
     private Button btn_publish_frg;
+
+    private Button btnPublish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,16 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
         btn_publish_frg = ((Button) findViewById(R.id.btn_publish_frg));
         btn_caogao_frg.setOnClickListener(this);
         btn_publish_frg.setOnClickListener(this);
+
+        btnPublish = ((Button) findViewById(R.id.btn_publish));
+        btnPublish.setOnClickListener(this);
+
+        ((ImageView) findViewById(R.id.iv_bank)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -60,6 +73,9 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.btn_caogao_frg:
                 newIndex=1;//选中第二项
+                break;
+            case R.id.btn_publish:
+                fragmentPublish.publis();
                 break;
         }
         switchFragment();

@@ -81,6 +81,6 @@ public class OrderActivity extends AppCompatActivity {
         Intent intent=getIntent();
         activity=intent.getParcelableExtra("activity1");
         x.image().bind(iv_order,NetUtil.url+activity.getActivityImgurl());
-        tv_order_time.setText(activity.getActivityBegintime()+"");
+        tv_order_time.setText(activity.getActivityBeginTime()+"");
     }
 }

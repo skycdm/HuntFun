@@ -564,16 +564,19 @@
                         android:text="报名留电"
                         android:textSize="18sp"
                         android:textColor="#000"/>
-                    <TextView
+                    <ToggleButton
                         android:id="@+id/t6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
+                        android:layout_width="75dp"
+                        android:layout_height="25dp"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="5dp"
                         android:layout_below="@+id/tv_liudian"
-                        android:text="未填写"
-                        android:textSize="15sp"
-                        android:textColor="#ccc"/>
+                        android:background="@android:color/transparent"
+                        android:button="@drawable/toggle_btn"
+                        android:checked="false"
+                        android:textOff=""
+                        android:textOn=""
+                        />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>

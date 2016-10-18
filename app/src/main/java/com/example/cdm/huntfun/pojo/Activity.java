@@ -4,45 +4,99 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.util.List;
 
 public class Activity implements Parcelable {
-	private int activityId;
-	private String activityLabel;
-	private int userId;
+	
+	private Integer activityId;
+	private String activityLable;
 	private String activityTheme;
+	private Timestamp activityBeginTime;
+	private Timestamp activityEndTime;
+	private Timestamp activityEndTimeSign;
 	private String activityAddress;
-	private Timestamp activityEndtimeSign;
-	private Timestamp activityBegintime;
-	private String activityImgurl;
 	private String activityDesc;
 	private String activityCare;
-	private double activityCost;
-	private int activityPeopleNumber;
-	private int joinerId;
-	private int is_classify;
-	public Activity(int activityId, String activityLabel, int userId,String activityAddress,
-			String activityTheme, Timestamp activityEndtimeSign,
-			Timestamp activityBegintime, String activityImgurl, String activityDesc,
-			String activityCare, double activityCost, int activityPeopleNumber,
-			int joinerId, int isClassify) {
-		super();
-		this.activityId = activityId;
-		this.activityLabel = activityLabel;
-		this.userId = userId;
+	private String activityImgurl;
+	private Double activityCost;
+	private Integer activityMaxPeopleNumber;
+	private String activityTrip;
+	private String gather;
+	private String phone;
+	
+	private User user;
+	private List<User> joiner;
+	private Boolean isLiuDian;
+	private Boolean isHeavy;
+	private Boolean isSpecial;
+
+	public Activity(String activityLable, String activityTheme, Timestamp activityBeginTime, Timestamp activityEndTime, Timestamp activityEndTimeSign, String activityAddress, String activityDesc, String activityCare, String activityImgurl, Double activityCost, Integer activityMaxPeopleNumber, String activityTrip, String gather, String phone, Boolean isLiuDian, User user) {
+		this.activityLable = activityLable;
 		this.activityTheme = activityTheme;
-		this.activityAddress=activityAddress;
-		this.activityEndtimeSign = activityEndtimeSign;
-		this.activityBegintime = activityBegintime;
-		this.activityImgurl = activityImgurl;
+		this.activityBeginTime = activityBeginTime;
+		this.activityEndTime = activityEndTime;
+		this.activityEndTimeSign = activityEndTimeSign;
+		this.activityAddress = activityAddress;
 		this.activityDesc = activityDesc;
 		this.activityCare = activityCare;
+		this.activityImgurl = activityImgurl;
 		this.activityCost = activityCost;
-		this.activityPeopleNumber = activityPeopleNumber;
-		this.joinerId = joinerId;
-		is_classify = isClassify;
+		this.activityMaxPeopleNumber = activityMaxPeopleNumber;
+		this.activityTrip = activityTrip;
+		this.gather = gather;
+		this.phone = phone;
+		this.isLiuDian = isLiuDian;
+		this.user=user;
 	}
-	
+
+	public Integer getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(Integer activityId) {
+		this.activityId = activityId;
+	}
+
+	public String getActivityLable() {
+		return activityLable;
+	}
+
+	public void setActivityLable(String activityLable) {
+		this.activityLable = activityLable;
+	}
+
+	public String getActivityTheme() {
+		return activityTheme;
+	}
+
+	public void setActivityTheme(String activityTheme) {
+		this.activityTheme = activityTheme;
+	}
+
+	public Timestamp getActivityBeginTime() {
+		return activityBeginTime;
+	}
+
+	public void setActivityBeginTime(Timestamp activityBeginTime) {
+		this.activityBeginTime = activityBeginTime;
+	}
+
+	public Timestamp getActivityEndTime() {
+		return activityEndTime;
+	}
+
+	public void setActivityEndTime(Timestamp activityEndTime) {
+		this.activityEndTime = activityEndTime;
+	}
+
+	public Timestamp getActivityEndTimeSign() {
+		return activityEndTimeSign;
+	}
+
+	public void setActivityEndTimeSign(Timestamp activityEndTimeSign) {
+		this.activityEndTimeSign = activityEndTimeSign;
+	}
+
 	public String getActivityAddress() {
 		return activityAddress;
 	}
@@ -51,83 +105,108 @@ public class Activity implements Parcelable {
 		this.activityAddress = activityAddress;
 	}
 
-	public int getActivityId() {
-		return activityId;
-	}
-	public void setActivityId(int activityId) {
-		this.activityId = activityId;
-	}
-	public String getActivityLabel() {
-		return activityLabel;
-	}
-	public void setActivityLabel(String activityLabel) {
-		this.activityLabel = activityLabel;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public String getActivityTheme() {
-		return activityTheme;
-	}
-	public void setActivityTheme(String activityTheme) {
-		this.activityTheme = activityTheme;
-	}
-	public Date getActivityEndtimeSign() {
-		return activityEndtimeSign;
-	}
-	public void setActivityEndtimeSign(Timestamp activityEndtimeSign) {
-		this.activityEndtimeSign = activityEndtimeSign;
-	}
-	public Date getActivityBegintime() {
-		return activityBegintime;
-	}
-	public void setActivityBegintime(Timestamp activityBegintime) {
-		this.activityBegintime = activityBegintime;
-	}
-	public String getActivityImgurl() {
-		return activityImgurl;
-	}
-	public void setActivityImgurl(String activityImgurl) {
-		this.activityImgurl = activityImgurl;
-	}
 	public String getActivityDesc() {
 		return activityDesc;
 	}
+
 	public void setActivityDesc(String activityDesc) {
 		this.activityDesc = activityDesc;
 	}
+
 	public String getActivityCare() {
 		return activityCare;
 	}
+
 	public void setActivityCare(String activityCare) {
 		this.activityCare = activityCare;
 	}
-	public double getActivityCost() {
+
+	public String getActivityImgurl() {
+		return activityImgurl;
+	}
+
+	public void setActivityImgurl(String activityImgurl) {
+		this.activityImgurl = activityImgurl;
+	}
+
+	public Double getActivityCost() {
 		return activityCost;
 	}
-	public void setActivityCost(double activityCost) {
+
+	public void setActivityCost(Double activityCost) {
 		this.activityCost = activityCost;
 	}
-	public int getActivityPeopleNumber() {
-		return activityPeopleNumber;
+
+	public Integer getActivityMaxPeopleNumber() {
+		return activityMaxPeopleNumber;
 	}
-	public void setActivityPeopleNumber(int activityPeopleNumber) {
-		this.activityPeopleNumber = activityPeopleNumber;
+
+	public void setActivityMaxPeopleNumber(Integer activityMaxPeopleNumber) {
+		this.activityMaxPeopleNumber = activityMaxPeopleNumber;
 	}
-	public int getJoinerId() {
-		return joinerId;
+
+	public String getActivityTrip() {
+		return activityTrip;
 	}
-	public void setJoinerId(int joinerId) {
-		this.joinerId = joinerId;
+
+	public void setActivityTrip(String activityTrip) {
+		this.activityTrip = activityTrip;
 	}
-	public int getIs_classify() {
-		return is_classify;
+
+	public String getGather() {
+		return gather;
 	}
-	public void setIs_classify(int isClassify) {
-		is_classify = isClassify;
+
+	public void setGather(String gather) {
+		this.gather = gather;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<User> getJoiner() {
+		return joiner;
+	}
+
+	public void setJoiner(List<User> joiner) {
+		this.joiner = joiner;
+	}
+
+	public Boolean getLiuDian() {
+		return isLiuDian;
+	}
+
+	public void setLiuDian(Boolean liuDian) {
+		isLiuDian = liuDian;
+	}
+
+	public Boolean getHeavy() {
+		return isHeavy;
+	}
+
+	public void setHeavy(Boolean heavy) {
+		isHeavy = heavy;
+	}
+
+	public Boolean getSpecial() {
+		return isSpecial;
+	}
+
+	public void setSpecial(Boolean special) {
+		isSpecial = special;
 	}
 
 
@@ -138,37 +217,49 @@ public class Activity implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(this.activityId);
-		dest.writeString(this.activityLabel);
-		dest.writeInt(this.userId);
+		dest.writeValue(this.activityId);
+		dest.writeString(this.activityLable);
 		dest.writeString(this.activityTheme);
+		dest.writeSerializable(this.activityBeginTime);
+		dest.writeSerializable(this.activityEndTime);
+		dest.writeSerializable(this.activityEndTimeSign);
 		dest.writeString(this.activityAddress);
-		dest.writeSerializable(this.activityEndtimeSign);
-		dest.writeSerializable(this.activityBegintime);
-		dest.writeString(this.activityImgurl);
 		dest.writeString(this.activityDesc);
 		dest.writeString(this.activityCare);
-		dest.writeDouble(this.activityCost);
-		dest.writeInt(this.activityPeopleNumber);
-		dest.writeInt(this.joinerId);
-		dest.writeInt(this.is_classify);
+		dest.writeString(this.activityImgurl);
+		dest.writeValue(this.activityCost);
+		dest.writeValue(this.activityMaxPeopleNumber);
+		dest.writeString(this.activityTrip);
+		dest.writeString(this.gather);
+		dest.writeString(this.phone);
+		dest.writeParcelable(this.user, flags);
+		dest.writeTypedList(this.joiner);
+		dest.writeValue(this.isLiuDian);
+		dest.writeValue(this.isHeavy);
+		dest.writeValue(this.isSpecial);
 	}
 
 	protected Activity(Parcel in) {
-		this.activityId = in.readInt();
-		this.activityLabel = in.readString();
-		this.userId = in.readInt();
+		this.activityId = (Integer) in.readValue(Integer.class.getClassLoader());
+		this.activityLable = in.readString();
 		this.activityTheme = in.readString();
+		this.activityBeginTime = (Timestamp) in.readSerializable();
+		this.activityEndTime = (Timestamp) in.readSerializable();
+		this.activityEndTimeSign = (Timestamp) in.readSerializable();
 		this.activityAddress = in.readString();
-		this.activityEndtimeSign = (Timestamp) in.readSerializable();
-		this.activityBegintime = (Timestamp) in.readSerializable();
-		this.activityImgurl = in.readString();
 		this.activityDesc = in.readString();
 		this.activityCare = in.readString();
-		this.activityCost = in.readDouble();
-		this.activityPeopleNumber = in.readInt();
-		this.joinerId = in.readInt();
-		this.is_classify = in.readInt();
+		this.activityImgurl = in.readString();
+		this.activityCost = (Double) in.readValue(Double.class.getClassLoader());
+		this.activityMaxPeopleNumber = (Integer) in.readValue(Integer.class.getClassLoader());
+		this.activityTrip = in.readString();
+		this.gather = in.readString();
+		this.phone = in.readString();
+		this.user = in.readParcelable(User.class.getClassLoader());
+		this.joiner = in.createTypedArrayList(User.CREATOR);
+		this.isLiuDian = (Boolean) in.readValue(Boolean.class.getClassLoader());
+		this.isHeavy = (Boolean) in.readValue(Boolean.class.getClassLoader());
+		this.isSpecial = (Boolean) in.readValue(Boolean.class.getClassLoader());
 	}
 
 	public static final Parcelable.Creator<Activity> CREATOR = new Parcelable.Creator<Activity>() {

@@ -1,9 +1,10 @@
 package com.example.cdm.huntfun.activity.fragment;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,8 +12,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.cdm.huntfun.DatePickActivity;
 import com.example.cdm.huntfun.R;
@@ -27,7 +28,10 @@ import com.example.cdm.huntfun.activity.fragment.child.CostActivity;
 import com.example.cdm.huntfun.activity.fragment.child.GatherActivity;
 import com.example.cdm.huntfun.activity.fragment.child.PeopleNumberActivity;
 import com.example.cdm.huntfun.activity.fragment.child.PhoneActivity;
+import com.example.cdm.huntfun.activity.fragment.child.TripActivity;
+import com.example.cdm.huntfun.pojo.User;
 import com.example.cdm.huntfun.util.NetUtil;
+import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -36,6 +40,7 @@ import org.xutils.x;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -160,15 +165,15 @@ public class FragmentPublish extends Fragment {
     @InjectView(R.id.tv_liudian)
     TextView tvLiudian;
     @InjectView(R.id.t6)
-    TextView t6;
+    ToggleButton t6;
+
+    com.example.cdm.huntfun.pojo.Activity activity;
 
     //相机拍摄照片和视频的标准目录
     private File file;
     private Uri imageUri;
     String items[] = {"相册选择", "拍照"};
     public static final int SELECT_PIC = 11;
-    public static final int TAKE_PHOTO = 12;
-    public static final int CROP = 13;
 
     @Nullable
     @Override
@@ -194,7 +199,7 @@ public class FragmentPublish extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case 91:
                 String gather = data.getStringExtra("gather");
                 t1.setText(gather);
@@ -211,23 +216,30 @@ public class FragmentPublish extends Fragment {
                 String phone = data.getStringExtra("phone");
                 t5.setText(phone);
                 break;
+            case 92:
+                String trip = data.getStringExtra("trip");
+                t2.setText(trip);
+                break;
             case SELECT_PIC:
                 //相册选择
-                if (data != null) {
-                    crop(data.getData());
-                }
-                break;
-            case TAKE_PHOTO:
-                crop(Uri.fromFile(file));
-                break;
-            case CROP:
-                if (data != null) {
-                    Bundle extras = data.getExtras();
-                    if (extras != null) {
-
-                        Bitmap bitmap = extras.getParcelable("data");
-                        showImage(scaleBitmap(bitmap));
-                    }
+                try {
+                    Uri selectedImage = data.getData(); //获取系统返回的照片的Uri
+                    System.out.println("url1=====" + selectedImage);
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                    System.out.println("url2=====" + filePathColumn[0]);
+                    Cursor cursor = getActivity().getContentResolver().query(selectedImage,
+                            filePathColumn, null, null, null);//从系统表中查询指定Uri对应的照片
+                    cursor.moveToFirst();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String picturePath = cursor.getString(columnIndex);  //获取照片路径
+                    System.out.println("url3=====" + picturePath);
+                    cursor.close();
+                    Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
+                    //ivFm.setImageBitmap(scaleBitmap(bitmap));
+                    showImage(scaleBitmap(bitmap));
+                } catch (Exception e) {
+                    // TODO Auto-generatedcatch block
+                    e.printStackTrace();
                 }
                 break;
         }
@@ -261,30 +273,13 @@ public class FragmentPublish extends Fragment {
         }
     }
 
-    public void crop(Uri uri) {
-        //  intent.setType("image/*");
-        //裁剪
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-
-        /*intent.putExtra("crop", "true");
-
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);*/
-
-        intent.putExtra("outputX", 400);
-        intent.putExtra("outputY", 200);
-        intent.putExtra("return-data", true);
-        startActivityForResult(intent, CROP);
-    }
-
     private Bitmap scaleBitmap(Bitmap src) {
         int width = src.getWidth();//原来尺寸大小
         int height = src.getHeight();
         final float destSize = 500;//缩放到这个大小,你想放大多少就多少
 
         //图片缩放比例，新尺寸/原来的尺寸
-        float scaleWidth = ((float) destSize) / width;
+        float scaleWidth = ((float) destSize+500) / width;
         float scaleHeight = ((float) destSize) / height;
 
         Matrix matrix = new Matrix();
@@ -315,14 +310,15 @@ public class FragmentPublish extends Fragment {
 
     public void uploadImage() {
 
-        RequestParams requestParams = new RequestParams(NetUtil.url + "UploadImageServlet");
+        //RequestParams requestParams = new RequestParams(NetUtil.url + "UploadFmServlet");
+        RequestParams requestParams = new RequestParams("http://10.40.5.46:8080/huntfunweb/UploadFmServlet");
         requestParams.setMultipart(true);
         requestParams.addBodyParameter("file", file);
 
         x.http().post(requestParams, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i("ModifyPersonInfo", "onSuccess: ");
+                System.out.println("success" + result);
             }
 
             @Override
@@ -349,7 +345,7 @@ public class FragmentPublish extends Fragment {
         ButterKnife.reset(this);
     }
 
-    @OnClick({R.id.repair_begtime_et, R.id.repair_endtime_et, R.id.repair_endsigntime_et, R.id.iv_fm, R.id.tv_jihe, R.id.tv_renshu, R.id.tv_dianhua, R.id.tv_feiyong})
+    @OnClick({R.id.repair_begtime_et, R.id.repair_endtime_et, R.id.repair_endsigntime_et, R.id.iv_fm, R.id.tv_jihe, R.id.tv_renshu, R.id.tv_dianhua, R.id.tv_feiyong, R.id.tv_xingcheng})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.repair_begtime_et:
@@ -369,35 +365,11 @@ public class FragmentPublish extends Fragment {
                 break;
             case R.id.iv_fm:
                 //选择封面
-                new AlertDialog.Builder(getActivity()).setTitle("选择").setItems(items, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-
-                        switch (which) {
-                            case 0:
-
-                                //相册选择
-                                Intent intent = new Intent(Intent.ACTION_PICK, null);
-                                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                                        "image/*");
-                                startActivityForResult(intent, SELECT_PIC);
-                                break;
-
-
-                            case 1:
-
-                                //拍照:
-                                Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                                intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-                                startActivityForResult(intent2, TAKE_PHOTO);
-
-                                break;
-                        }
-                    }
-                }).show();
+                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                intent.setType("image/*");
+                /*intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                                        "image*//*");*/
+                startActivityForResult(intent, SELECT_PIC);
                 break;
             case R.id.tv_jihe:
                 Intent intentjh = new Intent(getActivity(), GatherActivity.class);
@@ -415,6 +387,70 @@ public class FragmentPublish extends Fragment {
                 Intent intentfy = new Intent(getActivity(), CostActivity.class);
                 startActivityForResult(intentfy, 93);
                 break;
+            case R.id.tv_xingcheng:
+                Intent intentxc = new Intent(getActivity(), TripActivity.class);
+                startActivityForResult(intentxc, 92);
+                break;
+        }
+    }
+
+    public void getData() {
+        Timestamp activityBeginTime = null;
+        Timestamp activityEndTime = null;
+        Timestamp activityEndTimeSign = null;
+        System.out.println("initData");
+        String activityLable = edtActivityTheme.getText().toString();
+        String activityTheme = edtActivityTitle.getText().toString();
+        if (repairBegtimeEt.getText().toString() != null && repairEndtimeEt.getText().toString() != null && repairEndsigntimeEt.getText().toString() != null) {
+            activityBeginTime = Timestamp.valueOf((repairBegtimeEt.getText().toString()) + ":00");
+            activityEndTime = Timestamp.valueOf((repairEndtimeEt.getText().toString()) + ":00");
+            activityEndTimeSign = Timestamp.valueOf((repairEndsigntimeEt.getText().toString()) + ":00");
+        }
+        String activityAddress = edtActivityAddress.getText().toString();
+        String activityDesc = edtDetail.getText().toString();
+        String activityCare = edtCare.getText().toString();
+        String activityImgurl="uploadFm/"+file.getName();
+        Double activityCost=Double.parseDouble(t3.getText().toString());
+        Integer activityMaxPeopleNumber=Integer.parseInt(t4.getText().toString());
+        String activityTrip=t2.getText().toString();
+        String gather=t1.getText().toString();
+        String phone=t5.getText().toString();
+        Boolean isLiuDian=t6.isChecked();
+        System.out.println("sdasdasdasda"+isLiuDian);
+        activity=new com.example.cdm.huntfun.pojo.Activity(activityLable,activityTheme,activityBeginTime,activityEndTime,activityEndTimeSign,activityAddress,activityDesc,activityCare,activityImgurl,activityCost,activityMaxPeopleNumber,activityTrip,gather,phone,isLiuDian,new User(2));
+        System.out.println("1111111111111" + activity);
+    }
+
+    public void publis() {
+        getData();
+        if (activity != null) {
+            RequestParams requestParams = new RequestParams("http://10.40.5.46:8080/huntfunweb/InsertActivityServlet");
+            Gson gson = new Gson();
+            String activityInfo = gson.toJson(activity);
+            requestParams.addBodyParameter("activityInfo", activityInfo);
+            System.out.println("=======" + activityInfo);
+            x.http().get(requestParams, new Callback.CommonCallback<String>() {
+                @Override
+                public void onSuccess(String result) {
+                    System.out.println("success"+result);
+                        Toast.makeText(getActivity(), "发布成功", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onError(Throwable ex, boolean isOnCallback) {
+                    System.out.println("fail" + ex);
+                }
+
+                @Override
+                public void onCancelled(CancelledException cex) {
+
+                }
+
+                @Override
+                public void onFinished() {
+
+                }
+            });
         }
     }
 }
