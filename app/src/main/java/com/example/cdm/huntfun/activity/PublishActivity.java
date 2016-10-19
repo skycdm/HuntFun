@@ -69,10 +69,12 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
         switch(v.getId()){
             case R.id.btn_publish_frg:
                 newIndex=0;//选中第一项
+                btnPublish.setVisibility(View.VISIBLE);
                 break;
 
             case R.id.btn_caogao_frg:
                 newIndex=1;//选中第二项
+                btnPublish.setVisibility(View.GONE);
                 break;
             case R.id.btn_publish:
                 fragmentPublish.publis();
