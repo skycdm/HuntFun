@@ -23,6 +23,7 @@ public class Activity implements Parcelable {
 	private String activityTrip;
 	private String gather;
 	private String phone;
+	private int stateId;
 	
 	private User user;
 	private List<User> joiner;
@@ -47,6 +48,14 @@ public class Activity implements Parcelable {
 		this.phone = phone;
 		this.isLiuDian = isLiuDian;
 		this.user=user;
+	}
+
+	public int getStateId() {
+		return stateId;
+	}
+
+	public void setStateId(int stateId) {
+		this.stateId = stateId;
 	}
 
 	public Integer getActivityId() {
@@ -232,6 +241,7 @@ public class Activity implements Parcelable {
 		dest.writeString(this.activityTrip);
 		dest.writeString(this.gather);
 		dest.writeString(this.phone);
+		dest.writeInt(this.stateId);
 		dest.writeParcelable(this.user, flags);
 		dest.writeTypedList(this.joiner);
 		dest.writeValue(this.isLiuDian);
@@ -255,6 +265,7 @@ public class Activity implements Parcelable {
 		this.activityTrip = in.readString();
 		this.gather = in.readString();
 		this.phone = in.readString();
+		this.stateId = in.readInt();
 		this.user = in.readParcelable(User.class.getClassLoader());
 		this.joiner = in.createTypedArrayList(User.CREATOR);
 		this.isLiuDian = (Boolean) in.readValue(Boolean.class.getClassLoader());
@@ -262,7 +273,7 @@ public class Activity implements Parcelable {
 		this.isSpecial = (Boolean) in.readValue(Boolean.class.getClassLoader());
 	}
 
-	public static final Parcelable.Creator<Activity> CREATOR = new Parcelable.Creator<Activity>() {
+	public static final Creator<Activity> CREATOR = new Creator<Activity>() {
 		@Override
 		public Activity createFromParcel(Parcel source) {
 			return new Activity(source);

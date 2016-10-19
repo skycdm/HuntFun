@@ -45,7 +45,10 @@
         <activity
             android:name=".activity.fragment.child.PhoneActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.fragment.child.TripActivity"
+        <activity
+            android:name=".activity.fragment.child.TripActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.manage.ManageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 

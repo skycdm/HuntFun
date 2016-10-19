@@ -5,4 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="border_clo">#ccc</color>
     <color name="text_color_selected">#CCCCCC</color>
+
+
+    <color name="activity_state_no">#FF00FF</color>
+    <color name="activity_state_run">#FFA61A</color>
+    <color name="activity_state_end">#559ECA</color>
 </resources>

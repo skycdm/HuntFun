@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cdm.huntfun.activity.manage.ManageActivity">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#4ABDCC">
+        <ImageView
+            android:id="@+id/iv_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bank_48"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"/>
+
+        <Button
+            android:id="@+id/btn_jion_frg"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/btn_back_img_selector"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_middle"
+            android:paddingBottom="2dip"
+            android:paddingTop="7dip"
+            android:text="我参加的"
+            android:textColor="@drawable/publish_btn_text_color"
+            android:textSize="18sp"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_middle"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_centerInParent="true"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/btn_publish_frg"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_toRightOf="@+id/tv_middle"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_back_img_selector"
+            android:paddingBottom="2dip"
+            android:paddingTop="7dip"
+            android:text="我发布的"
+            android:textColor="@drawable/publish_btn_text_color"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/frag"
+        android:layout_below="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</RelativeLayout>

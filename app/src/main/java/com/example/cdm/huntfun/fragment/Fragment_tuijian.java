@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.example.cdm.huntfun.MainActivity;
 import com.example.cdm.huntfun.R;
 import com.example.cdm.huntfun.activity.PublishActivity;
+import com.example.cdm.huntfun.activity.manage.ManageActivity;
 
 
 /**
@@ -20,6 +21,7 @@ import com.example.cdm.huntfun.activity.PublishActivity;
 public class Fragment_tuijian extends Fragment {
 
     private RelativeLayout rel_publish;
+    private RelativeLayout rel_manage;
 
     @Nullable
     @Override
@@ -33,6 +35,15 @@ public class Fragment_tuijian extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(),PublishActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        rel_manage = ((RelativeLayout) view.findViewById(R.id.rel_manage));
+        rel_manage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMan=new Intent(getActivity(), ManageActivity.class);
+                startActivity(intentMan);
             }
         });
         return view;
