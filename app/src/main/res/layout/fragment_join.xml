@@ -37,10 +37,10 @@
         android:id="@+id/id_prod_list_sort_line1"
         android:layout_below="@id/prod_list_pop_two"/>
 
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/lv_join_act"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/id_prod_list_sort_line1">
-    </ListView>
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 </RelativeLayout>

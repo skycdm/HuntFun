@@ -21,6 +21,8 @@ import com.example.cdm.huntfun.util.CommonAdapter;
 import com.example.cdm.huntfun.util.ViewHolder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import org.xutils.common.Callback;
 import org.xutils.common.util.DensityUtil;
@@ -49,7 +51,7 @@ public class FragmentJoin extends BaseFragment {
     List<Activity> newActivity=new ArrayList<Activity>();
     List<String> popContents=new ArrayList<String>();
 
-    private ListView lvJoinAct;
+    private PullToRefreshListView lvJoinAct;
     private TextView pop;
 
 
@@ -60,13 +62,29 @@ public class FragmentJoin extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_join, null);
-        lvJoinAct = ((ListView) view.findViewById(R.id.lv_join_act));
+        lvJoinAct = ((PullToRefreshListView) view.findViewById(R.id.lv_join_act));
         pop = ((TextView) view.findViewById(R.id.id_prod_list_sort_right));
 
         pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 initPopupWindow(v);
+            }
+        });
+
+        lvJoinAct.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        lvJoinAct.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                pageNo++;
+                System.out.println("=========="+pageNo);
+                getData();
+                lvJoinAct.onRefreshComplete();
             }
         });
 
@@ -80,24 +98,7 @@ public class FragmentJoin extends BaseFragment {
 
     @Override
     public void initEvent() {
-        lvJoinAct.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                System.out.println("onScrollStateChanged***lastItem:"+lastItem);
-                System.out.println("onScrollStateChanged***listSize:"+pageSize);
-                if(lastItem == pageSize-1) {
-                    System.out.println("**************");
-                    pageNo++;
-                    getData();
-                }
-            }
 
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                lastItem=lvJoinAct.getLastVisiblePosition();
-                System.out.println("onScroll***lastItem"+lastItem);
-            }
-        });
     }
 
     @Override
