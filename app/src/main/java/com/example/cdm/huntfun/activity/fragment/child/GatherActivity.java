@@ -28,6 +28,9 @@ public class GatherActivity extends AppCompatActivity {
         back_cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("gather","未填写");
+                setResult(91,intent);
                 finish();
             }
         });

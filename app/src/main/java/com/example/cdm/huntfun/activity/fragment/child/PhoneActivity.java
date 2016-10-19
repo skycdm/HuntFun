@@ -27,6 +27,9 @@ public class PhoneActivity extends AppCompatActivity {
         back_cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("phone","未填写");
+                setResult(95,intent);
                 finish();
             }
         });

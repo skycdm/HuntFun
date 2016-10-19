@@ -27,6 +27,9 @@ public class TripActivity extends AppCompatActivity {
         back_cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("trip","未填写");
+                setResult(92,intent);
                 finish();
             }
         });

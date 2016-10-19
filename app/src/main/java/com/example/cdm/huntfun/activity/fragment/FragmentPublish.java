@@ -293,7 +293,7 @@ public class FragmentPublish extends Fragment {
     public void showImage(Bitmap bitmap) {
         ivFm.setImageBitmap(bitmap);//iv显示图片
         saveImage(bitmap);//保存文件
-        uploadImage();//上传服务器
+        //uploadImage();//上传服务器
 
     }
 
@@ -423,6 +423,7 @@ public class FragmentPublish extends Fragment {
 
     public void publis() {
         getData();
+        uploadImage();//上传服务器
         if (activity != null) {
             RequestParams requestParams = new RequestParams("http://10.40.5.46:8080/huntfunweb/InsertActivityServlet");
             Gson gson = new Gson();
@@ -452,5 +453,20 @@ public class FragmentPublish extends Fragment {
                 }
             });
         }
+        edtActivityTheme.setText("");
+        edtActivityTitle.setText("");
+        repairBegtimeEt.setText("");
+        repairEndtimeEt.setText("");
+        repairEndsigntimeEt.setText("");
+        edtActivityAddress.setText("");
+        edtDetail.setText("");
+        edtCare.setText("");
+        t1.setText("未填写");
+        t2.setText("未填写");
+        t3.setText("未填写");
+        t4.setText("未填写");
+        t5.setText("未填写");
+        t6.setChecked(false);
     }
+
 }

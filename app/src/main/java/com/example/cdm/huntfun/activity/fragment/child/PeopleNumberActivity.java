@@ -27,6 +27,9 @@ public class PeopleNumberActivity extends AppCompatActivity {
         back_cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("num","未填写");
+                setResult(94,intent);
                 finish();
             }
         });
