@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cdm.huntfun.R;
 import com.example.cdm.huntfun.fragment.BaseFragment;
@@ -40,11 +41,12 @@ import java.util.List;
  */
 public class FragmentJoin extends BaseFragment {
 
-    //商品名称
+    int userId=2;
     String activityName;
     int orderFlag=0;
     int pageNo=1;
     int pageSize=4;
+    int clazz=1;//获取参加的活动标志
 
     CommonAdapter<Activity> activityAdapter;
     List<Activity> activities=new ArrayList<>();
@@ -57,6 +59,9 @@ public class FragmentJoin extends BaseFragment {
 
     private int lastItem;
     private Boolean flag=true;
+
+
+    String resultPage="";
 
     @Nullable
     @Override
@@ -73,20 +78,6 @@ public class FragmentJoin extends BaseFragment {
         });
 
         lvJoinAct.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
-        lvJoinAct.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-
-            }
-
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                pageNo++;
-                System.out.println("=========="+pageNo);
-                getData();
-                lvJoinAct.onRefreshComplete();
-            }
-        });
 
         return view;
     }
@@ -98,7 +89,20 @@ public class FragmentJoin extends BaseFragment {
 
     @Override
     public void initEvent() {
-
+        lvJoinAct.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                if (!resultPage.equals("false")) {
+                    pageNo++;
+                    System.out.println("==========" + pageNo);
+                    getData();
+                }
+                if (resultPage.equals("false")) {
+                    Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
+                }
+                lvJoinAct.onRefreshComplete();
+            }
+        });
     }
 
     @Override
@@ -112,75 +116,82 @@ public class FragmentJoin extends BaseFragment {
     public void getData(){
         String url= "http://10.40.5.46:8080/huntfunweb/"+"QueryActivityServlet";//访问网络的url
         RequestParams requestParams=new RequestParams(url);
-        requestParams.addQueryStringParameter("productName",activityName);
+        requestParams.addQueryStringParameter("userId",String.valueOf(userId));
         requestParams.addQueryStringParameter("orderFlag",orderFlag+"");//排序标记
         requestParams.addQueryStringParameter("pageNo",pageNo+"");
         requestParams.addQueryStringParameter("pageSize",pageSize+"");
+        requestParams.addQueryStringParameter("clazz",clazz+"");
 
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
                 System.out.println("success"+result);
                 //json转换成List<Product>
-                Gson gson=new Gson();
-                Type type=new TypeToken<List<Activity>>(){}.getType();
-                //List<Activity> newActivity=new ArrayList<Activity>();
-                newActivity=gson.fromJson(result,type);
-                if (flag){
-                    activities.addAll(newActivity);
-                    System.out.println("activities.addAll(newActivity);===================");
-                }else {
-                    activities.clear();
-                    System.out.println("activities.clear();................"+newActivity);
-                    activities.addAll(newActivity);
+                if (result.trim().equals("false")){
+                    resultPage=result.trim();
+                    System.out.println("已加载全部数据:"+resultPage);
                 }
+                if (!result.trim().equals("false")) {
+                    Gson gson = new Gson();
+                    Type type = new TypeToken<List<Activity>>() {
+                    }.getType();
+                    //List<Activity> newActivity=new ArrayList<Activity>();
+                    newActivity = gson.fromJson(result, type);
+                    if (flag) {
+                        activities.addAll(newActivity);
+                        System.out.println("activities.addAll(newActivity);===================");
+                    } else {
+                        activities.clear();
+                        System.out.println("activities.clear();................" + newActivity);
+                        activities.addAll(newActivity);
+                    }
 
-                if (activityAdapter==null){
-                    activityAdapter=new CommonAdapter<Activity>(getActivity(),activities,R.layout.fragment_join_item) {
-                        @Override
-                        public void convert(ViewHolder viewHolder, Activity activity, int position) {
-                            TextView tv = viewHolder.getViewById(R.id.activity_theme);
-                            tv.setText(activity.getActivityTheme());
+                    if (activityAdapter == null) {
+                        activityAdapter = new CommonAdapter<Activity>(getActivity(), activities, R.layout.fragment_join_item) {
+                            @Override
+                            public void convert(ViewHolder viewHolder, Activity activity, int position) {
+                                TextView tv = viewHolder.getViewById(R.id.activity_theme);
+                                tv.setText(activity.getActivityTheme());
 
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-                            TextView tv_time = viewHolder.getViewById(R.id.tv_time);
-                            String begStr = sdf.format(activity.getActivityBeginTime());
-                            String endStr = sdf.format(activity.getActivityEndTime());
-                            tv_time.setText("时间："+begStr+"-"+endStr);
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+                                TextView tv_time = viewHolder.getViewById(R.id.tv_time);
+                                String begStr = sdf.format(activity.getActivityBeginTime());
+                                String endStr = sdf.format(activity.getActivityEndTime());
+                                tv_time.setText("时间：" + begStr + "-" + endStr);
 
-                            TextView tv_address = viewHolder.getViewById(R.id.tv_address);
-                            tv_address.setText("地点："+activity.getActivityAddress());
+                                TextView tv_address = viewHolder.getViewById(R.id.tv_address);
+                                tv_address.setText("地点：" + activity.getActivityAddress());
 
-                            ImageView act_fm = viewHolder.getViewById(R.id.act_fm);
-                            ImageOptions imageOptions = new ImageOptions.Builder()
-                                    .setSize(DensityUtil.dip2px(360), DensityUtil.dip2px(180))//图片大小
-                                    .setCrop(true)// 如果ImageView的大小不是定义为wrap_content, 不要crop.
-                                    .setLoadingDrawableId(R.mipmap.ic_launcher)//加载中默认显示图片
-                                    .setUseMemCache(true)//设置使用缓存
-                                    .setFailureDrawableId(R.drawable.activity_fm)//加载失败后默认显示图片
-                                    .build();
-                            System.out.println(activity.getActivityImgurl());
-                            x.image().bind(act_fm,"http://10.40.5.46:8080/huntfunweb/"+activity.getActivityImgurl(),imageOptions);
+                                ImageView act_fm = viewHolder.getViewById(R.id.act_fm);
+                                ImageOptions imageOptions = new ImageOptions.Builder()
+                                        .setSize(DensityUtil.dip2px(360), DensityUtil.dip2px(180))//图片大小
+                                        .setCrop(true)// 如果ImageView的大小不是定义为wrap_content, 不要crop.
+                                        .setLoadingDrawableId(R.mipmap.ic_launcher)//加载中默认显示图片
+                                        .setUseMemCache(true)//设置使用缓存
+                                        .setFailureDrawableId(R.drawable.activity_fm)//加载失败后默认显示图片
+                                        .build();
+                                x.image().bind(act_fm, "http://10.40.5.46:8080/huntfunweb/" + activity.getActivityImgurl(), imageOptions);
 
-                            TextView tv_state = viewHolder.getViewById(R.id.tv_state);
-                            String state=String.valueOf(activity.getStateId());
-                            if (state.equals("1")){
-                                tv_state.setText("活动未开始");
-                                tv_state.setBackgroundResource(R.color.activity_state_no);
+                                TextView tv_state = viewHolder.getViewById(R.id.tv_state);
+                                String state = String.valueOf(activity.getStateId());
+                                if (state.equals("1")) {
+                                    tv_state.setText("活动未开始");
+                                    tv_state.setBackgroundResource(R.color.activity_state_no);
+                                }
+                                if (state.equals("2")) {
+                                    tv_state.setText("活动进行中");
+                                    tv_state.setBackgroundResource(R.color.activity_state_run);
+                                }
+                                if (state.equals("3")) {
+                                    tv_state.setText("活动已结束");
+                                    tv_state.setBackgroundResource(R.color.activity_state_end);
+                                }
                             }
-                            if (state.equals("2")){
-                                tv_state.setText("活动进行中");
-                                tv_state.setBackgroundResource(R.color.activity_state_run);
-                            }
-                            if (state.equals("3")){
-                                tv_state.setText("活动已结束");
-                                tv_state.setBackgroundResource(R.color.activity_state_end);
-                            }
-                        }
-                    };
-                    lvJoinAct.setAdapter(activityAdapter);
-                }else {
-                    activityAdapter.notifyDataSetChanged();
+                        };
+                        lvJoinAct.setAdapter(activityAdapter);
+                    } else {
+                        activityAdapter.notifyDataSetChanged();
+                    }
                 }
             }
 
