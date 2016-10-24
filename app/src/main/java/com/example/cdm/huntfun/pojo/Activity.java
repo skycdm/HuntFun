@@ -31,6 +31,10 @@ public class Activity implements Parcelable {
 	private Boolean isHeavy;
 	private Boolean isSpecial;
 
+	public Activity(Integer activityId) {
+		this.activityId = activityId;
+	}
+
 	public Activity(String activityLable, String activityTheme, Timestamp activityBeginTime, Timestamp activityEndTime, Timestamp activityEndTimeSign, String activityAddress, String activityDesc, String activityCare, String activityImgurl, Double activityCost, Integer activityMaxPeopleNumber, String activityTrip, String gather, String phone, Boolean isLiuDian, User user) {
 		this.activityLable = activityLable;
 		this.activityTheme = activityTheme;

@@ -54,11 +54,10 @@
             android:textColor="@drawable/publish_btn_text_color"
             android:textSize="18sp" />
     </RelativeLayout>
-    <FrameLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/frag"
         android:layout_below="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-    </FrameLayout>
+    </android.support.v4.view.ViewPager>
 </RelativeLayout>

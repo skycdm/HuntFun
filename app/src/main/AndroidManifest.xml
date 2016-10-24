@@ -48,7 +48,16 @@
         <activity
             android:name=".activity.fragment.child.TripActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.manage.ManageActivity"
+        <activity
+            android:name=".activity.manage.ManageActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.manage.JoinExitActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.manage.JoinEvaluateActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.manage.PublishExitActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.manage.PublishEvaluateActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 

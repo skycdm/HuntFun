@@ -1,5 +1,6 @@
 package com.example.cdm.huntfun.activity.manage.fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,10 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cdm.huntfun.R;
+import com.example.cdm.huntfun.activity.manage.JoinEvaluateActivity;
+import com.example.cdm.huntfun.activity.manage.JoinExitActivity;
 import com.example.cdm.huntfun.fragment.BaseFragment;
 import com.example.cdm.huntfun.pojo.Activity;
 import com.example.cdm.huntfun.util.CommonAdapter;
@@ -59,6 +63,7 @@ public class FragmentJoin extends BaseFragment {
 
     private int lastItem;
     private Boolean flag=true;
+    private ProgressBar progressbar;
 
 
     String resultPage="";
@@ -76,6 +81,8 @@ public class FragmentJoin extends BaseFragment {
                 initPopupWindow(v);
             }
         });
+
+        progressbar = ((ProgressBar) view.findViewById(R.id.progressbar));
 
         lvJoinAct.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
 
@@ -96,11 +103,43 @@ public class FragmentJoin extends BaseFragment {
                     pageNo++;
                     System.out.println("==========" + pageNo);
                     getData();
+                    lvJoinAct.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            lvJoinAct.onRefreshComplete();
+                        }
+                    }, 1000);
                 }
-                if (resultPage.equals("false")) {
+                if (resultPage.equals("false")||newActivity.size()<4) {
                     Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
+                    lvJoinAct.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            lvJoinAct.onRefreshComplete();
+                        }
+                    }, 1000);
                 }
-                lvJoinAct.onRefreshComplete();
+            }
+        });
+
+        lvJoinAct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Integer state=activities.get(position-1).getStateId();
+                if (state==3){
+                    Intent intent=new Intent(getActivity(),JoinEvaluateActivity.class);
+                    System.out.println("onclick==="+position);
+                    intent.putExtra("activityInfo",activities.get(position-1));
+                    startActivityForResult(intent,1);
+                }else {
+                    Intent intent = new Intent(getActivity(), JoinExitActivity.class);
+                    System.out.println("onclick===" + position);
+                    intent.putExtra("activityInfo", activities.get(position - 1));
+                    startActivityForResult(intent, 1);
+                    //startActivity(intent);
+                }
             }
         });
     }
@@ -114,6 +153,7 @@ public class FragmentJoin extends BaseFragment {
     }
 
     public void getData(){
+        progressbar.setVisibility(View.VISIBLE);
         String url= "http://10.40.5.46:8080/huntfunweb/"+"QueryActivityServlet";//访问网络的url
         RequestParams requestParams=new RequestParams(url);
         requestParams.addQueryStringParameter("userId",String.valueOf(userId));
@@ -139,10 +179,8 @@ public class FragmentJoin extends BaseFragment {
                     newActivity = gson.fromJson(result, type);
                     if (flag) {
                         activities.addAll(newActivity);
-                        System.out.println("activities.addAll(newActivity);===================");
                     } else {
                         activities.clear();
-                        System.out.println("activities.clear();................" + newActivity);
                         activities.addAll(newActivity);
                     }
 
@@ -193,6 +231,7 @@ public class FragmentJoin extends BaseFragment {
                         activityAdapter.notifyDataSetChanged();
                     }
                 }
+                progressbar.setVisibility(View.GONE);
             }
 
             @Override

@@ -4,5 +4,5 @@ package com.example.cdm.huntfun.util;
  * Created by 执行Z on 2016/10/11.
  */
 public class NetUtil {
-    public static final String url="http://10.40.5.21:8080/HuntFun/";
+    public static final String url="http://10.40.5.46:8080/huntfunweb/";
 }

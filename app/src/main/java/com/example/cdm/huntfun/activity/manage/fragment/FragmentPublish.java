@@ -1,5 +1,6 @@
 package com.example.cdm.huntfun.activity.manage.fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cdm.huntfun.R;
+import com.example.cdm.huntfun.activity.manage.PublishEvaluateActivity;
+import com.example.cdm.huntfun.activity.manage.PublishExitActivity;
 import com.example.cdm.huntfun.fragment.BaseFragment;
 import com.example.cdm.huntfun.pojo.Activity;
 import com.example.cdm.huntfun.util.CommonAdapter;
@@ -79,6 +82,26 @@ public class FragmentPublish extends BaseFragment {
         progressbar = ((ProgressBar) view.findViewById(R.id.progressbar));
 
         lvJoinAct.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+
+        lvJoinAct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Integer state=activities.get(position-1).getStateId();
+                if (state==1){
+                    Intent intent=new Intent(getActivity(),PublishExitActivity.class);
+                    System.out.println("onclick==="+position);
+                    intent.putExtra("activityInfo",activities.get(position-1));
+                    startActivityForResult(intent,1);
+                }else {
+                    Intent intent = new Intent(getActivity(), PublishEvaluateActivity.class);
+                    System.out.println("onclick===" + position);
+                    intent.putExtra("activityInfo", activities.get(position - 1));
+                    startActivityForResult(intent, 1);
+                    //startActivity(intent);
+                }
+            }
+        });
+
         return view;
     }
 
@@ -96,11 +119,24 @@ public class FragmentPublish extends BaseFragment {
                     pageNo++;
                     System.out.println("==========" + pageNo);
                     getData();
+                    lvJoinAct.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            lvJoinAct.onRefreshComplete();
+                        }
+                    }, 1000);
                 }
-                if (resultPage.equals("false")) {
+                if (resultPage.equals("false")||newActivity.size()<4) {
                     Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
+                    lvJoinAct.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            lvJoinAct.onRefreshComplete();
+                        }
+                    }, 1000);
                 }
-                lvJoinAct.onRefreshComplete();
             }
         });
 
