@@ -234,7 +234,7 @@ public class Fragment_mine extends Fragment implements View.OnClickListener{
     private void getPicFromCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // 下面这句指定调用相机拍照后的照片存储的路径
-//        System.out.println("getPicFromCamera==========="+file.getAbsolutePath());
+//       System.out.println("getPicFromCamera==========="+file.getAbsolutePath());
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
         startActivityForResult(intent, CAMERA_REQUEST);
 
