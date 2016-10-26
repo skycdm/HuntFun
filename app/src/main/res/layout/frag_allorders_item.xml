@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:id="@+id/frag_allorders_item_rl"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#ffffff">
+        <TextView 
+            android:id="@+id/frag_allorders_item_time" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:text="订单时间：2016-01-03 20:34:12"
+            android:textSize="14sp"
+            android:textColor="#777777"/>
+        <TextView
+			 android:id="@+id/frag_allorders_item_trade" 
+             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:text="交易关闭"
+            android:clickable="true"
+            android:textSize="14sp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/red"/>
+        <View 
+        style="@style/bg_line"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    
+    <com.example.cdm.huntfun.widget.NoScrollListview
+        android:id="@+id/frag_allorders_item_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+ 		android:divider="@null"
+        />
+     <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#ffffff">
+         <View
+        style="@style/bg_line"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+             android:id="@+id/view3" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/sport_img"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sport_name"
+            android:text="活动名称"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/sport_img"
+            android:layout_toEndOf="@+id/sport_img" />
+        <TextView  
+            android:id="@+id/frag_allorders_item_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:text="实付￥1670.00"
+            android:textSize="16sp"
+            android:textColor="#777777"/>
+        <TextView 
+            android:id="@+id/frag_allorders_item_buynum"
+             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/frag_allorders_item_money"
+            android:text="共7人"
+            android:textSize="16sp"
+            android:paddingRight="6dp"
+            android:textColor="#777777"/>
+         <View
+             style="@style/bg_line"
+             android:layout_marginRight="10dp"
+             android:layout_marginLeft="10dp"
+             android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/ispayBt"
+        android:layout_width="match_parent"
+        android:layout_height="38dp">
+
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_item_right"
+            android:layout_alignParentRight="true"
+            android:text="取消"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_item_left"
+            android:layout_toLeftOf="@+id/btn_item_right"
+            android:text="付款"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/bg_line"
+        />
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#EEEEEE"/>
+
+</LinearLayout>

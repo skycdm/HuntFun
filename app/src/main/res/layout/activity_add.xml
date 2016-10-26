@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cdm.huntfun.AddActivity">
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/add_name"
+        android:hint="输入姓名"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/add_psw"
+        android:layout_alignStart="@+id/add_psw" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="输入密码"
+        android:password="true"
+        android:id="@+id/add_psw"
+        android:layout_below="@+id/add_name"
+        android:layout_centerHorizontal="true" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="再次输入密码"
+        android:password="true"
+        android:id="@+id/add_psw_again"
+        android:layout_below="@+id/add_psw"
+        android:layout_alignLeft="@+id/add_psw"
+        android:layout_alignStart="@+id/add_psw" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="输入电话"
+        android:phoneNumber="true"
+        android:id="@+id/add_phone"
+        android:layout_below="@+id/add_psw_again"
+        android:layout_alignLeft="@+id/add_psw_again"
+        android:layout_alignStart="@+id/add_psw_again" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="输入邮箱"
+        android:id="@+id/add_email"
+        android:layout_below="@+id/add_phone"
+        android:layout_alignLeft="@+id/add_phone"
+        android:layout_alignStart="@+id/add_phone" />
+
+    <EditText
+        android:visibility="gone"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="输入身份证号"
+        android:layout_below="@+id/add_email"
+        android:layout_alignLeft="@+id/add_email"
+        android:layout_alignStart="@+id/add_email"
+        android:id="@+id/editText2" />
+    <RadioGroup
+        android:id="@+id/check"
+        android:orientation="horizontal"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2">
+    <RadioButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="30dp"
+        android:text="女"
+        android:id="@+id/check_box1" />
+
+    <RadioButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="30dp"
+        android:text="男"
+       android:checked="true"
+        android:id="@+id/check_box" />
+    </RadioGroup>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_sure"
+        android:text="确定"
+        android:textSize="20dp"
+        android:layout_below="@+id/check"
+        android:layout_alignLeft="@+id/check"
+        android:layout_alignStart="@+id/check" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_back"
+        android:text="取消"
+        android:textSize="20dp"
+        android:layout_below="@+id/check"
+        android:layout_alignRight="@+id/check"
+        android:layout_alignEnd="@+id/check" />
+</RelativeLayout>

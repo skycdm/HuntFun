@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titlebar">
+    <ImageView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/photoImage"
+        android:src="@drawable/b"/>
+    <TextView
+
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/photoImage"
+       android:textSize="16sp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text="昵称"
+        android:id="@+id/name"/>
+    <TextView
+
+        android:layout_below="@id/name"
+      android:layout_alignLeft="@id/name"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:text="发布动态时间"
+        android:id="@+id/time"/>
+   <TextView
+       android:layout_marginLeft="10dp"
+       android:layout_below="@id/photoImage"
+       android:layout_marginTop="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="动态内容"
+      android:id="@+id/content"/>
+    </RelativeLayout>
+   <!-- <ImageView
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/titlebar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="动态图片"
+        android:src="@drawable/amc"
+        android:id="@+id/dyimage"/>-->
+
+    <com.example.cdm.huntfun.view.NineGridTestLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:visibility="visible"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/titlebar"
+        android:id="@+id/layout_nine_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:sapcing="4dp" />
+
+    <ImageView
+        android:id="@+id/good"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:src="@drawable/before"
+        android:layout_below="@id/layout_nine_grid"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="80dp"/>
+    <ImageView
+        android:id="@+id/remark"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:src="@drawable/remark"
+        android:layout_below="@id/layout_nine_grid"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="200dp"/>
+    <TextView
+        android:id="@+id/who"
+        android:layout_marginLeft="10dp"
+        android:drawableLeft="@drawable/zan"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="五人点赞"/>
+   <!-- <TextView
+
+        android:id="@+id/whocontent"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/who"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="谁"/>-->
+    <EditText
+        android:layout_below="@id/who"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/query"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+      android:background="@drawable/my_shape_1"
+      android:layout_marginBottom="10dp"
+        android:hint="评论"
+        android:textSize="16sp"
+        android:singleLine="true"
+        />
+</RelativeLayout>

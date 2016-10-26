@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cdm.huntfun.MineActivity.MySport">
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="返回"
+        android:button="@null"
+        android:textSize="20dp"
+        android:drawableLeft="@drawable/nav_back"
+        android:id="@+id/sport_back"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="发布的活动"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_above="@+id/refreshable_view"
+        android:layout_centerHorizontal="true" />
+
+    <com.example.cdm.huntfun.MineActivity.RefreshableView
+        android:id="@+id/refreshable_view"
+        android:layout_width="fill_parent"
+        android:background="#ccc"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/sport_back">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/my_sport"
+            android:scrollbars="none"
+            />
+    </com.example.cdm.huntfun.MineActivity.RefreshableView>
+</RelativeLayout>
