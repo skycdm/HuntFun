@@ -126,6 +126,10 @@ public class JoinEvaluateActivity extends AppCompatActivity {
     Evaluate evaluate;
 
     Set<String> ev = new HashSet<String>();
+    @InjectView(R.id.join_num)
+    TextView joinNum;
+    @InjectView(R.id.user_phone)
+    TextView userPhone;
 
 
     @Override
@@ -157,16 +161,16 @@ public class JoinEvaluateActivity extends AppCompatActivity {
         //ev.add("false,null");
         Set<String> resultSet = share.getStringSet(activity.getActivityId() + "", ev);
         if (!resultSet.toString().equals("[]")) {
-            System.out.println(activity.getActivityId()+"==="+resultSet);
-            String[] results = resultSet.toString().split(",",2);
-            System.out.println(results[0]+"+++"+results[1]);
+            System.out.println(activity.getActivityId() + "===" + resultSet);
+            String[] results = resultSet.toString().split(",", 2);
+            System.out.println(results[0] + "+++" + results[1]);
             //String id=String.valueOf(activity.getActivityId());
-            if (("["+activity.getActivityId()).equals(results[0])) {
+            if (("[" + activity.getActivityId()).equals(results[0])) {
                 System.out.println("asdasda");
-                String result=results[1];
-                if (result.charAt(result.length()-1)==']') {
+                String result = results[1];
+                if (result.charAt(result.length() - 1) == ']') {
                     edtEvaluate.setText(results[1].substring(0, results[1].length() - 1));
-                }else {
+                } else {
                     edtEvaluate.setText(result);
                 }
                 tvEvaluate.setText("已评论");
@@ -204,6 +208,13 @@ public class JoinEvaluateActivity extends AppCompatActivity {
             x.image().bind(actFm, NetUtil.url + activity.getActivityImgurl(), imageOptions);
 
             tvDetail.setText(activity.getActivityDesc());
+
+            tvCare.setText(activity.getActivityCare());
+
+            userName.setText(activity.getUser().getUserName());
+            userPhone.setText("电话：" + activity.getUser().getPhone());
+            tvTrip.setText(activity.getActivityTrip());
+            joinNum.setText(activity.getJoiner().size() + "人");
         }
     }
 

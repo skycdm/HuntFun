@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
+import com.example.cdm.huntfun.pojo.SysOut;
 import com.example.cdm.huntfun.util.Util;
 
 import java.text.ParseException;
@@ -47,6 +48,7 @@ public class DatePickActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_pick);
         ButterKnife.inject(this);
+        SysOut.getInstance().addActivity(this);
         System.out.println("onCreate============================================================================================================");
         init();
     }

@@ -7,31 +7,45 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
-        android:background="@drawable/tupian"
-        android:id="@+id/frame_my_information"
         android:layout_alignBottom="@+id/view">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/tupian"
+            android:clickable="true"
+            android:id="@+id/frame_my_information"
+            android:scaleType="fitXY"
+            />
+        <com.example.cdm.huntfun.ImagView.ImagView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/head"
             android:clickable="true"
             android:id="@+id/imageView"
             android:layout_above="@+id/xingming"
-            android:layout_alignLeft="@+id/xingming"
-            android:layout_alignStart="@+id/xingming" />
+            android:layout_centerHorizontal="true" />
+
+        <!--<ImageView-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:src="@drawable/head"-->
+        <!--android:clickable="true"-->
+
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_above="@+id/xingming"-->
+        <!--android:layout_alignLeft="@+id/xingming"-->
+        <!--android:layout_alignStart="@+id/xingming" />-->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:textColor="#000"
             android:text="姓名"
             android:id="@+id/xingming"
             android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/fensi"
-            android:layout_alignStart="@+id/fensi" />
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -138,22 +152,34 @@
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/view1">
 
+        <!--<TextView-->
+            <!--android:clickable="true"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:drawableLeft="@drawable/youji"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="游记#故事集"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="15dp"-->
+            <!--android:id="@+id/youji"-->
         <TextView
             android:clickable="true"
-            android:onClick="my_travel_say_click"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:drawableLeft="@drawable/youji"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="游记#故事集"
+            android:layout_width="wrap_content"
+            android:onClick="is_order_click"
+            android:paddingLeft="10dp"
             android:textColor="#fff"
+            android:drawableLeft="@drawable/mysport"
+            android:text="发布的活动"
             android:textSize="15dp"
-            android:id="@+id/youji"
-
-            android:layout_marginTop="20dp" />
+            android:gravity="center"
+            android:id="@+id/huodong"
+            android:paddingTop="20dp"
+            />
         <TextView
             android:clickable="true"
+            android:onClick="Phone_call"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:drawableLeft="@drawable/kefu"
@@ -164,7 +190,7 @@
             android:textColor="#fff"
             android:textSize="15dp"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/youji"
+            android:layout_below="@+id/huodong"
             android:id="@+id/kefu" />
         <TextView
             android:clickable="true"
@@ -203,6 +229,18 @@
             android:textSize="15dp"
             android:gravity="center"
             />
+        <!--<TextView-->
+            <!--android:clickable="true"-->
+            <!--android:onClick="is_order_click"-->
+            <!--android:drawableTop="@drawable/mysport"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="#000"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="发布的活动"-->
+            <!--android:textSize="15dp"-->
+            <!--android:gravity="center"-->
+            <!--/>-->
         <TextView
             android:clickable="true"
             android:onClick="collection_click"

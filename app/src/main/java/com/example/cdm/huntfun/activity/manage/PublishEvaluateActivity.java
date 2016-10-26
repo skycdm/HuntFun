@@ -104,10 +104,6 @@ public class PublishEvaluateActivity extends AppCompatActivity {
     TextView tvExit;
     @InjectView(R.id.rl_eva)
     RelativeLayout rlEva;
-    @InjectView(R.id.line_eva)
-    TextView lineEva;
-    @InjectView(R.id.lv_eva)
-    ListViewForScrollView lvEva;
     @InjectView(R.id.scrollview)
     ScrollView scrollview;
 
@@ -115,12 +111,18 @@ public class PublishEvaluateActivity extends AppCompatActivity {
     int pageSize = 4;
 
 
-    String resultPage="";
-    private Boolean flag=true;
+    String resultPage = "";
+    @InjectView(R.id.join_num)
+    TextView joinNum;
+    @InjectView(R.id.user_phone)
+    TextView userPhone;
+    @InjectView(R.id.lv_eva)
+    ListViewForScrollView lvEva;
+    private Boolean flag = true;
 
     CommonAdapter<Evaluate> evaluateyAdapter;
-    List<Evaluate> evaluates=new ArrayList<>();
-    List<Evaluate> newEvaluate=new ArrayList<Evaluate>();
+    List<Evaluate> evaluates = new ArrayList<>();
+    List<Evaluate> newEvaluate = new ArrayList<Evaluate>();
 
     Activity activity;
 
@@ -129,7 +131,7 @@ public class PublishEvaluateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publish_evaluate);
         ButterKnife.inject(this);
-        scrollview.smoothScrollTo(0,0);
+        scrollview.smoothScrollTo(0, 0);
         initData();
         getData();
     }
@@ -163,6 +165,11 @@ public class PublishEvaluateActivity extends AppCompatActivity {
             tvDetail.setText(activity.getActivityDesc());
 
             tvCare.setText(activity.getActivityCare());
+
+            userName.setText(activity.getUser().getUserName());
+            userPhone.setText("电话：" + activity.getUser().getPhone());
+            tvTrip.setText(activity.getActivityTrip());
+            joinNum.setText(activity.getJoiner().size() + "人");
         }
     }
 
@@ -176,10 +183,10 @@ public class PublishEvaluateActivity extends AppCompatActivity {
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                System.out.println("onSucess"+result.trim());
-                if (result.trim().equals("false")){
-                    resultPage=result.trim();
-                    System.out.println("已加载全部数据:"+resultPage);
+                System.out.println("onSucess" + result.trim());
+                if (result.trim().equals("false")) {
+                    resultPage = result.trim();
+                    System.out.println("已加载全部数据:" + resultPage);
                 }
                 if (!result.trim().equals("false")) {
                     Gson gson = new Gson();
@@ -197,7 +204,7 @@ public class PublishEvaluateActivity extends AppCompatActivity {
                     if (evaluateyAdapter == null) {
 
                         System.out.println("ok");
-                        evaluateyAdapter=new CommonAdapter<Evaluate>(getApplicationContext(),evaluates,R.layout.evaluate_item) {
+                        evaluateyAdapter = new CommonAdapter<Evaluate>(getApplicationContext(), evaluates, R.layout.evaluate_item) {
                             @Override
                             public void convert(ViewHolder viewHolder, Evaluate evaluate, int position) {
                                 TextView tv = viewHolder.getViewById(R.id.tv_name);

@@ -98,6 +98,10 @@ public class PublishExitActivity extends AppCompatActivity {
     ScrollView scrollview;
 
     Activity activity;
+    @InjectView(R.id.join_num)
+    TextView joinNum;
+    @InjectView(R.id.user_phone)
+    TextView userPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,27 +140,32 @@ public class PublishExitActivity extends AppCompatActivity {
             tvDetail.setText(activity.getActivityDesc());
 
             tvCare.setText(activity.getActivityCare());
+
+            userName.setText(activity.getUser().getUserName());
+            userPhone.setText("电话：" + activity.getUser().getPhone());
+            tvTrip.setText(activity.getActivityTrip());
+            joinNum.setText(activity.getJoiner().size() + "人");
         }
     }
 
     @OnClick(R.id.tv_exit)
     public void onClick() {
         System.out.println("qqqqqqqqqqqqq");
-        RequestParams requestParams=new RequestParams(NetUtil.url+"DeleteActivityServlet");
+        RequestParams requestParams = new RequestParams(NetUtil.url + "DeleteActivityServlet");
 
-        requestParams.addQueryStringParameter("activityId",activity.getActivityId()+"");
-        requestParams.addQueryStringParameter("userId",2+"");
+        requestParams.addQueryStringParameter("activityId", activity.getActivityId() + "");
+        requestParams.addQueryStringParameter("userId", 2 + "");
 
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                System.out.println("onsucsss"+result.trim());
+                System.out.println("onsucsss" + result.trim());
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
 
-                System.out.println("error"+ex.getMessage().toString());
+                System.out.println("error" + ex.getMessage().toString());
             }
 
             @Override

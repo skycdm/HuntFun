@@ -133,6 +133,7 @@
                     android:src="@drawable/head"
                     android:layout_below="@+id/tv_num_detail"/>
                 <TextView
+                    android:id="@+id/join_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -248,7 +249,7 @@
                 <TextView
                     android:id="@+id/tv_care"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_below="@+id/tv_detail"
                     android:text="注意事项："
@@ -286,6 +287,7 @@
                     android:textSize="15sp"
                     android:textColor="#686B6E"/>
                 <TextView
+                    android:id="@+id/user_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/user_name"
@@ -344,7 +346,6 @@
                 android:id="@+id/rl_eva"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginBottom="7dp"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:background="#fff"
@@ -366,20 +367,23 @@
                     android:layout_marginRight="8dp"
                     android:src="@drawable/more_right"/>
             </RelativeLayout>
-            <TextView
+            <!--<TextView
                 android:id="@+id/line_eva"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/rl_eva"
-                android:background="#dbdbdb"/>
+                android:background="#dbdbdb"/>-->
 
             <com.example.cdm.huntfun.util.ListViewForScrollView
                 android:id="@+id/lv_eva"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/line_eva">
+                android:layout_below="@+id/rl_eva"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/layout_back_border">
 
             </com.example.cdm.huntfun.util.ListViewForScrollView>
             <!--<com.handmark.pulltorefresh.library.PullToRefreshListView

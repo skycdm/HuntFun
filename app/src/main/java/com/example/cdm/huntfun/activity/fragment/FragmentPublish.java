@@ -30,7 +30,6 @@ import com.example.cdm.huntfun.activity.fragment.child.PeopleNumberActivity;
 import com.example.cdm.huntfun.activity.fragment.child.PhoneActivity;
 import com.example.cdm.huntfun.activity.fragment.child.TripActivity;
 import com.example.cdm.huntfun.pojo.User;
-import com.example.cdm.huntfun.util.NetUtil;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
