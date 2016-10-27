@@ -151,10 +151,13 @@ public class FragmentJoin extends BaseFragment {
         popContents.add("未进行");
         popContents.add("进行中");
         popContents.add("已结束");
+        popContents.add("全部状态");
     }
 
     public void getData(){
-        progressbar.setVisibility(View.VISIBLE);
+        if (pageNo==1) {
+            progressbar.setVisibility(View.VISIBLE);
+        }
         String url= NetUtil.url+"QueryActivityServlet";//访问网络的url
         RequestParams requestParams=new RequestParams(url);
         requestParams.addQueryStringParameter("userId",String.valueOf(userId));
@@ -225,6 +228,9 @@ public class FragmentJoin extends BaseFragment {
                                     tv_state.setText("活动已结束");
                                     tv_state.setBackgroundResource(R.color.activity_state_end);
                                 }
+
+                                TextView tv_person_number = viewHolder.getViewById(R.id.tv_person_number);
+                                tv_person_number.setText("报名人数："+activity.getJoiner().size());
                             }
                         };
                         lvJoinAct.setAdapter(activityAdapter);
@@ -254,7 +260,7 @@ public class FragmentJoin extends BaseFragment {
 
     public void  initPopupWindow(View v){
         View view=LayoutInflater.from(getActivity()).inflate(R.layout.lv_activity_state,null);
-        final PopupWindow popupWindow=new PopupWindow(view,ViewGroup.LayoutParams.MATCH_PARENT,200);
+        final PopupWindow popupWindow=new PopupWindow(view,ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         //listview设置数据源
         ListView lv = ((ListView) view.findViewById(R.id.lv_activity_state));
         ArrayAdapter arrayAdapter=new ArrayAdapter(getActivity(),R.layout.lv_activity_state_item,popContents);
@@ -283,6 +289,10 @@ public class FragmentJoin extends BaseFragment {
                     pageNo=1;
                 }else if (position==2){
                     orderFlag=3;
+                    flag=false;
+                    pageNo=1;
+                }else if (position==3){
+                    orderFlag=0;
                     flag=false;
                     pageNo=1;
                 }
