@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +14,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.cdm.huntfun.R;
+import com.example.cdm.huntfun.activity.ownview.ListenerForScrolView;
 import com.example.cdm.huntfun.pojo.Activity;
 import com.example.cdm.huntfun.pojo.Evaluate;
 import com.example.cdm.huntfun.pojo.User;
@@ -100,8 +100,6 @@ public class JoinEvaluateActivity extends AppCompatActivity {
     View view;
     @InjectView(R.id.tv_trip)
     TextView tvTrip;
-    @InjectView(R.id.scrollview)
-    ScrollView scrollview;
     @InjectView(R.id.iv_back)
     ImageView ivBack;
     @InjectView(R.id.edt_evaluate)
@@ -130,7 +128,12 @@ public class JoinEvaluateActivity extends AppCompatActivity {
     TextView joinNum;
     @InjectView(R.id.user_phone)
     TextView userPhone;
+    @InjectView(R.id.scrollview)
+    ListenerForScrolView scrollview;
 
+
+    private int mLastScrollY;
+    private int mScrollThreshold=10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +142,24 @@ public class JoinEvaluateActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         getData();
-        scrollview.setOnTouchListener(new View.OnTouchListener() {
+
+        scrollview.setOnScrollChangedListener(new ListenerForScrolView.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
+                System.out.println("onScrollChanged1");
+                boolean isSignificantDelta = Math.abs(t - mLastScrollY) > mScrollThreshold;
+                if (isSignificantDelta) {
+                    if (t > mLastScrollY) {
+                        bottom.setVisibility(View.GONE);
+                    } else {
+                        bottom.setVisibility(View.VISIBLE);
+                    }
+                }
+                mLastScrollY = t;
+            }
+        });
+
+        /*scrollview.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_MOVE) {
@@ -152,7 +172,7 @@ public class JoinEvaluateActivity extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        });*/
         initEvent();
     }
 
