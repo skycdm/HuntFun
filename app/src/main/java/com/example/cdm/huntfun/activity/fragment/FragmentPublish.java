@@ -30,6 +30,7 @@ import com.example.cdm.huntfun.activity.fragment.child.PeopleNumberActivity;
 import com.example.cdm.huntfun.activity.fragment.child.PhoneActivity;
 import com.example.cdm.huntfun.activity.fragment.child.TripActivity;
 import com.example.cdm.huntfun.pojo.User;
+import com.example.cdm.huntfun.util.NetUtil;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
@@ -309,8 +310,7 @@ public class FragmentPublish extends Fragment {
 
     public void uploadImage() {
 
-        //RequestParams requestParams = new RequestParams(NetUtil.url + "UploadFmServlet");
-        RequestParams requestParams = new RequestParams("http://10.40.5.46:8080/huntfunweb/UploadFmServlet");
+        RequestParams requestParams = new RequestParams(NetUtil.url + "UploadFmServlet");
         requestParams.setMultipart(true);
         requestParams.addBodyParameter("file", file);
 
@@ -408,7 +408,7 @@ public class FragmentPublish extends Fragment {
         String activityAddress = edtActivityAddress.getText().toString();
         String activityDesc = edtDetail.getText().toString();
         String activityCare = edtCare.getText().toString();
-        String activityImgurl="uploadFm/"+file.getName();
+        String activityImgurl="image/"+file.getName();
         Double activityCost=Double.parseDouble((t3.getText().toString()).equals("未填写")?"0":t3.getText().toString());
         Integer activityMaxPeopleNumber=Integer.parseInt((t4.getText().toString()).equals("未填写")?"0":t4.getText().toString());
         String activityTrip=t2.getText().toString();
@@ -424,7 +424,7 @@ public class FragmentPublish extends Fragment {
         getData();
         uploadImage();//上传服务器
         if (activity != null) {
-            RequestParams requestParams = new RequestParams("http://10.40.5.46:8080/huntfunweb/InsertActivityServlet");
+            RequestParams requestParams = new RequestParams(NetUtil.url+"InsertActivityServlet");
             Gson gson = new Gson();
             String activityInfo = gson.toJson(activity);
             requestParams.addBodyParameter("activityInfo", activityInfo);

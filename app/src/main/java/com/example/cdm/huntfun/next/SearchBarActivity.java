@@ -59,7 +59,7 @@ public class SearchBarActivity extends AppCompatActivity {
     public void initData(){
         Intent intent=getIntent();
         String query=intent.getStringExtra("theme");
-        RequestParams requestParams=new RequestParams(NetUtil.url+"get_activity_desc");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"GetActivityBydescServlet");
         try {
             requestParams.addQueryStringParameter("theme",URLEncoder.encode(query,"utf-8"));
         } catch (UnsupportedEncodingException e) {

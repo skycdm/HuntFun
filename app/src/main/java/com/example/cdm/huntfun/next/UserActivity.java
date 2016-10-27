@@ -136,7 +136,7 @@ public class UserActivity extends AppCompatActivity {
         getUserByConcernId();
     }
     public void insertConcern(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"insert_concern");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"InsertConcernServlet");
         requestParams.addQueryStringParameter("userId",1+"");
         requestParams.addQueryStringParameter("concernUserId",activity.getUser().getUserId()+"");
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
@@ -162,7 +162,7 @@ public class UserActivity extends AppCompatActivity {
         });
     }
     public void deleteConcern(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"delete_concern");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"DeleteConcernServlet");
         requestParams.addQueryStringParameter("userId",1+"");
         requestParams.addQueryStringParameter("concernUserId",activity.getUser().getUserId()+"");
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
@@ -188,7 +188,7 @@ public class UserActivity extends AppCompatActivity {
         });
     }
     public void getUserByConcernId(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"get_user_concernId");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"GetUserByConcernIdServlet");
         requestParams.addQueryStringParameter("concernUserId",activity.getUser().getUserId()+"");
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
             @Override

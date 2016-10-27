@@ -157,7 +157,7 @@ public class Fragment_home extends Fragment {
 
 
     public void initData(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"get_activity");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"GetActivityByClassfy");
         requestParams.addQueryStringParameter("is_classify",is_classify+"");
         requestParams.addQueryStringParameter("pageNo",pageNo+"");
         requestParams.addQueryStringParameter("pageSize",pageSize+"");
@@ -209,7 +209,7 @@ public class Fragment_home extends Fragment {
     }
 
     public void initData1(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"get_activity");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"GetActivityByClassfy");
         requestParams.addQueryStringParameter("is_classify",is_classify1+"");
         requestParams.addQueryStringParameter("pageNo",pageNo+"");
         requestParams.addQueryStringParameter("pageSize",pageSize+"");
@@ -262,7 +262,7 @@ public class Fragment_home extends Fragment {
     }
 
     public void initData2(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"get_activity");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"GetActivityByClassfy");
         requestParams.addQueryStringParameter("is_classify",is_classify2+"");
         requestParams.addQueryStringParameter("pageNo",pageNo+"");
         requestParams.addQueryStringParameter("pageSize",pageSize+"");

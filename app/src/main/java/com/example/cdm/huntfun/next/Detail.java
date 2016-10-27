@@ -215,7 +215,7 @@ public class Detail extends AppCompatActivity {
 
     public void collect(){
 
-        RequestParams requestParams =new RequestParams(NetUtil.url+"insert_collect");
+        RequestParams requestParams =new RequestParams(NetUtil.url+"InsertCollectServlet");
         requestParams.addQueryStringParameter("userId",1+"");
         requestParams.addQueryStringParameter("activityId",activity.getActivityId()+"");
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
@@ -241,7 +241,7 @@ public class Detail extends AppCompatActivity {
         });
     }
     public void delete(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"delete_collect");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"DeleteCollectServlet");
         requestParams.addQueryStringParameter("userId",1+"");
         requestParams.addQueryStringParameter("activityId",activity.getActivityId()+"");
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
@@ -267,7 +267,7 @@ public class Detail extends AppCompatActivity {
         });
     }
     public void getNumber(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"get_number");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"GetNumberByIdServlet");
         requestParams.addQueryStringParameter("activityId",activity.getActivityId()+"");
         x.http().get(requestParams, new Callback.CommonCallback<String>() {
             @Override

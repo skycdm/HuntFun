@@ -71,7 +71,7 @@ public class CountActivity extends AppCompatActivity {
     }
 
     public void updateNumber(){
-        RequestParams requestParams=new RequestParams(NetUtil.url+"update_number");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"UpdateNumberServlet");
         requestParams.addQueryStringParameter("activityId",activityId+"");
         requestParams.addQueryStringParameter("number",yu_number+"");
         x.http().get(requestParams, new Callback.CommonCallback<String>() {

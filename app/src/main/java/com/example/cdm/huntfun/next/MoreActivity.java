@@ -40,7 +40,7 @@ public class MoreActivity extends AppCompatActivity {
     public void initData(){
             Intent intent=getIntent();
             Integer is_classify=intent.getIntExtra("is_classify",1);
-            RequestParams requestParams=new RequestParams(NetUtil.url+"get_classify_activity");
+            RequestParams requestParams=new RequestParams(NetUtil.url+"GetActivityClassifyServlet");
             requestParams.addQueryStringParameter("is_classify",is_classify+"");
             Log.e("sss","ss+======================================");
             x.http().get(requestParams, new Callback.CommonCallback<String>() {

@@ -23,6 +23,7 @@ import com.example.cdm.huntfun.activity.manage.JoinExitActivity;
 import com.example.cdm.huntfun.fragment.BaseFragment;
 import com.example.cdm.huntfun.pojo.Activity;
 import com.example.cdm.huntfun.util.CommonAdapter;
+import com.example.cdm.huntfun.util.NetUtil;
 import com.example.cdm.huntfun.util.ViewHolder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -154,7 +155,7 @@ public class FragmentJoin extends BaseFragment {
 
     public void getData(){
         progressbar.setVisibility(View.VISIBLE);
-        String url= "http://10.40.5.46:8080/huntfunweb/"+"QueryActivityServlet";//访问网络的url
+        String url= NetUtil.url+"QueryActivityServlet";//访问网络的url
         RequestParams requestParams=new RequestParams(url);
         requestParams.addQueryStringParameter("userId",String.valueOf(userId));
         requestParams.addQueryStringParameter("orderFlag",orderFlag+"");//排序标记
@@ -208,7 +209,7 @@ public class FragmentJoin extends BaseFragment {
                                         .setUseMemCache(true)//设置使用缓存
                                         .setFailureDrawableId(R.drawable.activity_fm)//加载失败后默认显示图片
                                         .build();
-                                x.image().bind(act_fm, "http://10.40.5.46:8080/huntfunweb/" + activity.getActivityImgurl(), imageOptions);
+                                x.image().bind(act_fm, NetUtil.url + activity.getActivityImgurl(), imageOptions);
 
                                 TextView tv_state = viewHolder.getViewById(R.id.tv_state);
                                 String state = String.valueOf(activity.getStateId());

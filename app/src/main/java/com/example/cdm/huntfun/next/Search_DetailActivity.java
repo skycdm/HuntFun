@@ -65,7 +65,7 @@ public class Search_DetailActivity extends AppCompatActivity {
     public void initData(){
         Intent intent=getIntent();
         String query=intent.getStringExtra("search_name");
-        RequestParams requestParams=new RequestParams(NetUtil.url+"get_activity_label");
+        RequestParams requestParams=new RequestParams(NetUtil.url+"GetActivityByLabel");
         try {
             requestParams.addQueryStringParameter("label",URLEncoder.encode(query,"utf-8"));
         } catch (UnsupportedEncodingException e) {
