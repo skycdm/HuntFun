@@ -1,31 +1,32 @@
 package com.example.cdm.huntfun.fragment;
 
-/*import android.app.AlertDialog;
+import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;*/
 import android.os.Bundle;
-import android.app.Fragment;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-/*import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;*/
 
+import com.example.cdm.huntfun.MineActivity.FaBuActivity;
+import com.example.cdm.huntfun.MineActivity.Phone;
+import com.example.cdm.huntfun.MineActivity.SystemSet;
 import com.example.cdm.huntfun.R;
-/*
-import com.example.lian.xiangmu_kuangjia.FaBuActivity;
-import com.example.lian.xiangmu_kuangjia.pojo.Constent;
-import com.example.lian.xiangmu_kuangjia.pojo.MyInformation;
-import com.example.lian.xiangmu_kuangjia.pojo.Sport_name;
+import com.example.cdm.huntfun.pojo.Constent;
+import com.example.cdm.huntfun.pojo.Myself;
+import com.example.cdm.huntfun.pojo.Sport_name;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -35,47 +36,68 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-*/
 
-/**
+
+/** 曹玉勇(我的模块)
  * Created by lian on 2016/9/19.
  */
-public class Fragment_mine extends Fragment{
-    /*private RelativeLayout frame_my_information;
+public class Fragment_mine extends Fragment implements View.OnClickListener{
     private ImageView imageView;
-    final List<MyInformation.Myself> myselfs = new ArrayList<MyInformation.Myself>();
-  final   File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)+"/"+
+    private int flag = 0;
+//    final List<Myself> myselfs = new ArrayList<Myself>();
+    List<Myself> information = new ArrayList<>();
+    final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)+"/"+
             getPhotoFileName());
     private static final int PHOTO_REQUEST = 1;
     private static final int CAMERA_REQUEST = 2;
     private static final int PHOTO_CLIP = 3;
-    private TextView fabu;*/
+    private TextView fabu;
+    private TextView youji;
+    private TextView shezhi;
+    private Button shezhi1;
+    private TextView kefu;
+    private ImageView backImag;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine,null);
-        /*frame_my_information = ((RelativeLayout) view.findViewById(R.id.frame_my_information));
 
         getMyinformation();
 
-        imageView = ((ImageView) view.findViewById(R.id.imageView));
-        fabu = ((TextView) view.findViewById(R.id.fabuhuodong));
+        backImag = ((ImageView) view.findViewById(R.id.frame_my_information));
+        imageView = ((ImageView) view.findViewById(R.id.imageView));//修改/显示头像
+        fabu = ((TextView) view.findViewById(R.id.fabuhuodong));//发布活动
+//        youji = ((TextView) view.findViewById(R.id.youji));//游记
+        shezhi = ((TextView) view.findViewById(R.id.shezhi));//设置
+        shezhi1 = ((Button) view.findViewById(R.id.shezhi1));//设置图标
+        kefu = ((TextView) view.findViewById(R.id.kefu));//客服
 
+        kefu.setOnClickListener(this);
         fabu.setOnClickListener(this);
+        shezhi.setOnClickListener(this);
+        shezhi1.setOnClickListener(this);
         imageView.setOnClickListener(this);
-        frame_my_information.setOnClickListener(this);*/
+        backImag.setOnClickListener(this);
 
         return view;
-
     }
 
-    /*private void getMyinformation() {
-        RequestParams paramas = new RequestParams(Constent.URL+"/ww/getMyInformation?name="+Sport_name.NAME+"");
+    private void getMyinformation() {
+        RequestParams paramas = null;
+        try {
+            paramas = new RequestParams(Constent.URL+"/huntfunService/getMyInformation?name="+ URLEncoder.encode(Sport_name.NAME,"utf-8")+"");
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         x.http().get(paramas, new Callback.CacheCallback<String>() {
             private TextView xingming;
@@ -86,10 +108,10 @@ public class Fragment_mine extends Fragment{
             @Override
             public void onSuccess(String result) {
 
+                System.out.println(result);
                 Gson g = new Gson();
-                MyInformation information = g.fromJson(result, MyInformation.class);
-
-                myselfs.addAll(information.myself);
+                Type type=new TypeToken<List<Myself>>(){}.getType();
+                information = g.fromJson(result, type);
 
                 zhan = ((TextView) getView().findViewById(R.id.guanzhu));
                 fensi = ((TextView) getView().findViewById(R.id.fensi));
@@ -97,10 +119,20 @@ public class Fragment_mine extends Fragment{
                 xingming = ((TextView) getView().findViewById(R.id.xingming));
 
                 xingming.setText(Sport_name.NAME);
-                zhan.setText(myselfs.get(0).likeNum.toString());
-                fensi.setText(myselfs.get(0).fansNum.toString());
-                jifen.setText(myselfs.get(0).followNum.toString());
-                x.image().bind(imageView, Constent.URL+"ww/imgs/"+myselfs.get(0).headId+"");
+                zhan.setText(information.get(0).getLikeNum().toString());
+                fensi.setText(information.get(0).getFansNum().toString());
+                jifen.setText(information.get(0).getFollowNum().toString());
+                if(information.get(0).getHeadId().length()>0){
+                    String[] img = information.get(0).getHeadId().split("/");
+                    System.out.println(Constent.URL+"huntfunService/image/"+img[1]+""+"=====");
+                    x.image().bind(imageView, Constent.URL+"huntfunService/image/"+img[1]+"");
+                }
+
+                if((information.get(0).getBackgroundId()).length()>0){
+                    String[] img = information.get(0).getBackgroundId().split("/");
+                    x.image().bind(backImag, Constent.URL+"huntfunService/image/"+img[1]+"");
+                    System.out.println( Constent.URL+"huntfunService/image/"+img[1]+"");
+                }
             }
 
             @Override
@@ -136,24 +168,44 @@ public class Fragment_mine extends Fragment{
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.frame_my_information:
-//                popupdown1();
-//            break;
+            case R.id.frame_my_information:
+                flag = 1;
+                popupdown2();
+            break;
             case R.id.imageView:
+                flag = 0;
                 popupdown2();
                 break;
             case R.id.fabuhuodong:
                 fabu();
                 break;
+            case R.id.shezhi:
+                shezhi();
+                break;
+            case R.id.shezhi1:
+                shezhi();
+                break;
+            case R.id.kefu:
+                phone();
+                break;
         }
     }
 
-    private void fabu() {
-        System.out.println("123");
-        Intent intent = new Intent(getActivity(), FaBuActivity.class);
+    private void phone() {
+
+        Intent intent = new Intent(getActivity(), Phone.class);
         startActivity(intent);
     }
 
+    private void shezhi() {
+        Intent intent = new Intent(getActivity(), SystemSet.class);
+        startActivity(intent);
+    }
+
+    private void fabu() {
+        Intent intent = new Intent(getActivity(), FaBuActivity.class);
+        startActivity(intent);
+    }
 
     private void popupdown2() {
         AlertDialog.Builder dialog  = new AlertDialog.Builder(getActivity());
@@ -173,16 +225,17 @@ public class Fragment_mine extends Fragment{
         });
         dialog.show();
     }
-    private void popupdown1() {
-        AlertDialog.Builder dialog  = new AlertDialog.Builder(getActivity());
-        dialog.setNegativeButton("选择图片", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                getPicFromCamera();
-            }
-        });
-        dialog.show();
-    }
+
+//    private void popupdown1() {
+//        AlertDialog.Builder dialog  = new AlertDialog.Builder(getActivity());
+//        dialog.setNegativeButton("选择图片", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                getPicFromCamera();
+//            }
+//        });
+//        dialog.show();
+//    }
 
     private void getPicFromCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -196,20 +249,24 @@ public class Fragment_mine extends Fragment{
     private void getPicFromPhoto() {
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                "image*//*");
+                "image/*");
         startActivityForResult(intent, PHOTO_REQUEST);
 
     }
 
     private void send() {
 
+        RequestParams params = null;//ww 是你要访问的servlet
+        try {
+            params = new RequestParams(Constent.URL+"huntfunService/Imag?name="+ URLEncoder.encode(Sport_name.NAME,"utf-8")+"&flag="+flag+"");
 
-        Toast.makeText(getActivity(),Sport_name.NAME,Toast.LENGTH_LONG).show();
-        RequestParams params = new RequestParams(Constent.URL+"ww/imag?name="+Sport_name.NAME+"");//ww 是你要访问的servlet
+            System.out.println(Constent.URL+"huntfunService/Imag?name="+ URLEncoder.encode(Sport_name.NAME,"utf-8")+"&flag="+flag+"");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         params.addBodyParameter("fileName",file.getName());
         params.addBodyParameter("file",file);
-//        params.addBodyParameter("file",file1);
 
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
@@ -262,7 +319,13 @@ public class Fragment_mine extends Fragment{
                     if (extras != null) {
                         Bitmap photo = extras.getParcelable("data");
                         saveImageToGallery(getActivity(),photo);//保存bitmap到本地
-                        imageView.setImageBitmap(photo);
+                        System.out.println("3============"+flag);
+                        if(flag==0) {
+                            imageView.setImageBitmap(photo);
+                        }
+                        if(flag==1){
+                            backImag.setImageBitmap(photo);
+                        }
                     }
                 }
                 break;
@@ -270,10 +333,11 @@ public class Fragment_mine extends Fragment{
                 break;
         }
     }
+
     private void photoClip(Uri uri) {
         // 调用系统中自带的图片剪裁
         Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image*//*");
+        intent.setDataAndType(uri, "image/*");
         // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
         intent.putExtra("crop", "true");
         // aspectX aspectY 是宽高的比例
@@ -285,6 +349,7 @@ public class Fragment_mine extends Fragment{
         intent.putExtra("return-data", true);
         startActivityForResult(intent, PHOTO_CLIP);
     }
+
     public void saveImageToGallery(Context context, Bitmap bmp) {
         // 首先保存图片
 //        File appDir = new File(Environment.getExternalStorageDirectory(), "Boohee");
@@ -315,6 +380,6 @@ public class Fragment_mine extends Fragment{
         // 最后通知图库更新
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + file.getAbsolutePath())));
 
-    }*/
+    }
 
 }

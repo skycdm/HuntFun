@@ -51,6 +51,11 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     //取出控件，赋值
     public abstract void  convert(ViewHolder viewHolder,T t,int position);
+
+    public void remove(int position){
+        lists.remove(position);//删除
+        this.notifyDataSetChanged();//刷新，更改适配器对象的数据源
+    }
 }
 
 

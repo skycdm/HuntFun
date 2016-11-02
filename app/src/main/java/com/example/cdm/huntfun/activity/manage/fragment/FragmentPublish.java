@@ -22,6 +22,7 @@ import com.example.cdm.huntfun.activity.manage.PublishExitActivity;
 import com.example.cdm.huntfun.fragment.BaseFragment;
 import com.example.cdm.huntfun.pojo.Activity;
 import com.example.cdm.huntfun.util.CommonAdapter;
+import com.example.cdm.huntfun.util.NetUtil;
 import com.example.cdm.huntfun.util.ViewHolder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -127,8 +128,8 @@ public class FragmentPublish extends BaseFragment {
                         }
                     }, 1000);
                 }
-                if (resultPage.equals("false")||newActivity.size()<4) {
-                    Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
+                if (resultPage.equals("false")) {
+                    //Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
                     lvJoinAct.postDelayed(new Runnable() {
 
                         @Override
@@ -148,11 +149,14 @@ public class FragmentPublish extends BaseFragment {
         popContents.add("未进行");
         popContents.add("进行中");
         popContents.add("已结束");
+        popContents.add("全部状态");
     }
 
     public void getData(){
-        progressbar.setVisibility(View.VISIBLE);
-        String url= "http://10.40.5.46:8080/huntfunweb/"+"QueryActivityServlet";//访问网络的url
+        if (pageNo==1) {
+            progressbar.setVisibility(View.VISIBLE);
+        }
+        String url= NetUtil.url+"QueryActivityServlet";//访问网络的url
         RequestParams requestParams=new RequestParams(url);
         requestParams.addQueryStringParameter("userId",String.valueOf(userId));
         requestParams.addQueryStringParameter("orderFlag",orderFlag+"");//排序标记
@@ -167,7 +171,7 @@ public class FragmentPublish extends BaseFragment {
                 //json转换成List<Product>
                 if (result.trim().equals("false")){
                     resultPage=result.trim();
-                    System.out.println("已加载全部数据:"+resultPage);
+                    Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
                 }
                 if (!result.trim().equals("false")) {
                     Gson gson = new Gson();
@@ -206,7 +210,7 @@ public class FragmentPublish extends BaseFragment {
                                         .setUseMemCache(true)//设置使用缓存
                                         .setFailureDrawableId(R.drawable.activity_fm)//加载失败后默认显示图片
                                         .build();
-                                x.image().bind(act_fm, "http://10.40.5.46:8080/huntfunweb/" + activity.getActivityImgurl(), imageOptions);
+                                x.image().bind(act_fm, NetUtil.url + activity.getActivityImgurl(), imageOptions);
 
                                 TextView tv_state = viewHolder.getViewById(R.id.tv_state);
                                 String state = String.valueOf(activity.getStateId());
@@ -222,6 +226,8 @@ public class FragmentPublish extends BaseFragment {
                                     tv_state.setText("活动已结束");
                                     tv_state.setBackgroundResource(R.color.activity_state_end);
                                 }
+                                TextView tv_person_number = viewHolder.getViewById(R.id.tv_person_number);
+                                tv_person_number.setText("报名人数："+activity.getJoiner().size());
                             }
                         };
                         lvJoinAct.setAdapter(activityAdapter);
@@ -282,9 +288,14 @@ public class FragmentPublish extends BaseFragment {
                     orderFlag=3;
                     flag=false;
                     pageNo=1;
+                }else if (position==3){
+                    orderFlag=0;
+                    flag=false;
+                    pageNo=1;
                 }
                 getData();
             }
         });
     }
+
 }

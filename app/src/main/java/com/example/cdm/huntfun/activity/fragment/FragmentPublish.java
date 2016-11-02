@@ -86,16 +86,6 @@ public class FragmentPublish extends Fragment {
     ImageView ivIn2;
     @InjectView(R.id.rl_endtime)
     RelativeLayout rlEndtime;
-    @InjectView(R.id.tv_5)
-    TextView tv5;
-    @InjectView(R.id.tv_activity_endtimesign)
-    TextView tvActivityEndtimesign;
-    @InjectView(R.id.repair_endsigntime_et)
-    EditText repairEndsigntimeEt;
-    @InjectView(R.id.iv_in4)
-    ImageView ivIn4;
-    @InjectView(R.id.rl_endtimesign)
-    RelativeLayout rlEndtimesign;
     @InjectView(R.id.tv_4)
     View tv4;
     @InjectView(R.id.tv_activity_address)
@@ -187,6 +177,7 @@ public class FragmentPublish extends Fragment {
             imageUri = Uri.fromFile(file);
         }
 
+        fromCaogao();
         return view;
     }
 
@@ -196,29 +187,47 @@ public class FragmentPublish extends Fragment {
         return sdf.format(date) + ".png";
     }
 
+    String gather ="";
+    String cost ="";
+    String num ="";
+    String phone ="";
+    String trip ="";
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("onActivityResult");
         switch (requestCode) {
             case 91:
-                String gather = data.getStringExtra("gather");
-                t1.setText(gather);
+                if (gather!=null) {
+                    gather = data.getStringExtra("gather");
+                    System.out.println("gather"+gather);
+                    t1.setText(gather);
+                }
                 break;
             case 93:
-                String cost = data.getStringExtra("cost");
-                t3.setText(cost);
+                if (gather!=null) {
+                    cost = data.getStringExtra("cost");
+                    t3.setText(cost);
+                }
                 break;
             case 94:
-                String num = data.getStringExtra("num");
-                t4.setText(num);
+                if (gather!=null) {
+                    num = data.getStringExtra("num");
+                    t4.setText(num);
+                }
                 break;
             case 95:
-                String phone = data.getStringExtra("phone");
-                t5.setText(phone);
+                if (gather!=null) {
+                    phone = data.getStringExtra("phone");
+                    t5.setText(phone);
+                }
                 break;
             case 92:
-                String trip = data.getStringExtra("trip");
-                t2.setText(trip);
+                if (gather!=null) {
+                    trip = data.getStringExtra("trip");
+                    t2.setText(trip);
+                }
                 break;
             case SELECT_PIC:
                 //相册选择
@@ -257,16 +266,6 @@ public class FragmentPublish extends Fragment {
             String date = data.getStringExtra("date");
             if (!repairEndtimeEt.getText().toString().equals(date)) {
                 repairEndtimeEt.setText(data.getStringExtra("date"));
-            } else {
-                System.out.println("选择未变");
-            }
-        }
-        if (resultCode == Activity.RESULT_OK && requestCode == 3) {
-            // 选择预约时间的页面被关闭
-            String date = data.getStringExtra("date");
-            if (!repairEndsigntimeEt.getText().toString().equals(date)) {
-                repairEndsigntimeEt.setText(data.getStringExtra("date"));
-                //Toast.makeText(getActivity().getApplicationContext(),"报名结束时间必须小于开始时间",Toast.LENGTH_SHORT).show();
             } else {
                 System.out.println("选择未变");
             }
@@ -310,8 +309,7 @@ public class FragmentPublish extends Fragment {
 
     public void uploadImage() {
 
-        //RequestParams requestParams = new RequestParams(NetUtil.url + "UploadFmServlet");
-        RequestParams requestParams = new RequestParams("http://10.40.5.46:8080/huntfunweb/UploadFmServlet");
+        RequestParams requestParams = new RequestParams(NetUtil.url + "UploadFmServlet");
         requestParams.setMultipart(true);
         requestParams.addBodyParameter("file", file);
 
@@ -345,7 +343,7 @@ public class FragmentPublish extends Fragment {
         ButterKnife.reset(this);
     }
 
-    @OnClick({R.id.repair_begtime_et, R.id.repair_endtime_et, R.id.repair_endsigntime_et, R.id.iv_fm, R.id.tv_jihe, R.id.tv_renshu, R.id.tv_dianhua, R.id.tv_feiyong, R.id.tv_xingcheng})
+    @OnClick({R.id.repair_begtime_et, R.id.repair_endtime_et, R.id.iv_fm, R.id.tv_jihe, R.id.tv_renshu, R.id.tv_dianhua, R.id.tv_feiyong, R.id.tv_xingcheng})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.repair_begtime_et:
@@ -358,11 +356,6 @@ public class FragmentPublish extends Fragment {
                 intent2.putExtra("date", repairEndtimeEt.getText().toString());
                 startActivityForResult(intent2, 2);
                 break;
-            case R.id.repair_endsigntime_et:
-                Intent intent3 = new Intent(getActivity(), DatePickActivity.class);
-                intent3.putExtra("date", repairEndsigntimeEt.getText().toString());
-                startActivityForResult(intent3, 3);
-                break;
             case R.id.iv_fm:
                 //选择封面
                 Intent intent = new Intent(Intent.ACTION_PICK, null);
@@ -373,22 +366,27 @@ public class FragmentPublish extends Fragment {
                 break;
             case R.id.tv_jihe:
                 Intent intentjh = new Intent(getActivity(), GatherActivity.class);
+                intentjh.putExtra("gather",t1.getText().toString());
                 startActivityForResult(intentjh, 91);
                 break;
             case R.id.tv_renshu:
                 Intent intentrs = new Intent(getActivity(), PeopleNumberActivity.class);
+                intentrs.putExtra("num",t4.getText().toString());
                 startActivityForResult(intentrs, 94);
                 break;
             case R.id.tv_dianhua:
                 Intent intentdh = new Intent(getActivity(), PhoneActivity.class);
+                intentdh.putExtra("phone",t5.getText().toString());
                 startActivityForResult(intentdh, 95);
                 break;
             case R.id.tv_feiyong:
                 Intent intentfy = new Intent(getActivity(), CostActivity.class);
+                intentfy.putExtra("cost",t3.getText().toString());
                 startActivityForResult(intentfy, 93);
                 break;
             case R.id.tv_xingcheng:
                 Intent intentxc = new Intent(getActivity(), TripActivity.class);
+                intentxc.putExtra("trip",t2.getText().toString());
                 startActivityForResult(intentxc, 92);
                 break;
         }
@@ -401,15 +399,26 @@ public class FragmentPublish extends Fragment {
         System.out.println("initData");
         String activityLable = edtActivityTheme.getText().toString();
         String activityTheme = edtActivityTitle.getText().toString();
-        if (repairBegtimeEt.getText().toString() != null && repairEndtimeEt.getText().toString() != null && repairEndsigntimeEt.getText().toString() != null) {
+        /*if (repairBegtimeEt.getText().toString() != null && repairEndtimeEt.getText().toString() != null) {
             activityBeginTime = Timestamp.valueOf((repairBegtimeEt.getText().toString()) + ":00");
             activityEndTime = Timestamp.valueOf((repairEndtimeEt.getText().toString()) + ":00");
-            activityEndTimeSign = Timestamp.valueOf((repairEndsigntimeEt.getText().toString()) + ":00");
+        }*/
+        if (repairBegtimeEt.getText().toString() .equals("") || repairEndtimeEt.getText().toString().equals("")) {
+            Toast.makeText(getActivity(),"活动开始和结束时间不能为空",Toast.LENGTH_SHORT).show();
+            return;
+        }else {
+            activityBeginTime = Timestamp.valueOf((repairBegtimeEt.getText().toString()) + ":00");
+            activityEndTime = Timestamp.valueOf((repairEndtimeEt.getText().toString()) + ":00");
+            if(activityBeginTime.getTime()>activityEndTime.getTime()){
+                Toast.makeText(getActivity(),"活动开始时间必须小于结束时间",Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
+
         String activityAddress = edtActivityAddress.getText().toString();
         String activityDesc = edtDetail.getText().toString();
         String activityCare = edtCare.getText().toString();
-        String activityImgurl="uploadFm/"+file.getName();
+        String activityImgurl="image/"+file.getName();
         Double activityCost=Double.parseDouble((t3.getText().toString()).equals("未填写")?"0":t3.getText().toString());
         Integer activityMaxPeopleNumber=Integer.parseInt((t4.getText().toString()).equals("未填写")?"0":t4.getText().toString());
         String activityTrip=t2.getText().toString();
@@ -417,7 +426,11 @@ public class FragmentPublish extends Fragment {
         String phone=t5.getText().toString();
         Boolean isLiuDian=t6.isChecked();
         System.out.println("sdasdasdasda"+isLiuDian);
-        activity=new com.example.cdm.huntfun.pojo.Activity(activityLable,activityTheme,activityBeginTime,activityEndTime,activityEndTimeSign,activityAddress,activityDesc,activityCare,activityImgurl,activityCost,activityMaxPeopleNumber,activityTrip,gather,phone,isLiuDian,new User(2));
+
+        Timestamp creatTime=new Timestamp(System.currentTimeMillis());
+        System.out.println("creatTime"+creatTime);
+
+        activity=new com.example.cdm.huntfun.pojo.Activity(activityLable,activityTheme,activityBeginTime,activityEndTime,creatTime,activityAddress,activityDesc,activityCare,activityImgurl,activityCost,activityMaxPeopleNumber,activityTrip,gather,phone,isLiuDian,new User(2));
         System.out.println("1111111111111" + activity);
     }
 
@@ -425,7 +438,7 @@ public class FragmentPublish extends Fragment {
         getData();
         uploadImage();//上传服务器
         if (activity != null) {
-            RequestParams requestParams = new RequestParams("http://10.40.5.46:8080/huntfunweb/InsertActivityServlet");
+            RequestParams requestParams = new RequestParams(NetUtil.url+"InsertActivityServlet");
             Gson gson = new Gson();
             String activityInfo = gson.toJson(activity);
             requestParams.addBodyParameter("activityInfo", activityInfo);
@@ -434,7 +447,7 @@ public class FragmentPublish extends Fragment {
                 @Override
                 public void onSuccess(String result) {
                     System.out.println("success"+result);
-                        Toast.makeText(getActivity(), "发布成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "发布成功", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -453,12 +466,11 @@ public class FragmentPublish extends Fragment {
                 }
             });
         }
-        edtActivityTheme.setText("");
-        edtActivityTitle.setText("");
+        /*edtActivityTheme.setText("");
+        edtActivityTitle.setText("");*/
         repairBegtimeEt.setText("");
         repairEndtimeEt.setText("");
-        repairEndsigntimeEt.setText("");
-        edtActivityAddress.setText("");
+        /*edtActivityAddress.setText("");
         edtDetail.setText("");
         edtCare.setText("");
         t1.setText("未填写");
@@ -466,7 +478,35 @@ public class FragmentPublish extends Fragment {
         t3.setText("未填写");
         t4.setText("未填写");
         t5.setText("未填写");
-        t6.setChecked(false);
+        t6.setChecked(false);*/
     }
 
+    public void fromCaogao(){
+        Intent intent = getActivity().getIntent();
+        activity = intent.getParcelableExtra("activityInfo");
+        System.out.println("initData+===" + activity);
+        if (activity!=null) {
+            edtActivityTheme.setText(activity.getActivityLable());
+            edtActivityTitle.setText(activity.getActivityTheme());
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            repairBegtimeEt.setText(sdf.format(activity.getActivityBeginTime()));
+            repairEndtimeEt.setText(sdf.format(activity.getActivityEndTime()));
+            edtActivityAddress.setText(activity.getActivityAddress());
+            edtDetail.setText(activity.getActivityDesc());
+            edtCare.setText(activity.getActivityCare());
+            t1.setText(activity.getGather());
+            t2.setText(activity.getActivityTrip());
+            t3.setText(activity.getActivityCost() + "");
+            t4.setText(activity.getActivityMaxPeopleNumber() + "");
+            t5.setText(activity.getPhone());
+            t6.setChecked(activity.getLiuDian());
+
+            if (activity.getActivityImgurl()!=null) {
+                Bitmap bitmap = BitmapFactory.decodeFile(activity.getActivityImgurl());
+                //ivFm.setImageBitmap(bitmap);
+                showImage(scaleBitmap(bitmap));
+            }
+        }
+    }
 }

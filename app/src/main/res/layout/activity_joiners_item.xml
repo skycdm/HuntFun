@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#fff">
+        <ImageView
+            android:id="@+id/joiner_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/head"/>
+        <TextView
+            android:id="@+id/joiner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/joiner_head"
+            android:layout_alignTop="@+id/joiner_head"
+            android:layout_marginLeft="7dp"
+            android:text="用户昵称"
+            android:textSize="16sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/joiner_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/joiner_name"
+            android:layout_marginBottom="3dp"
+            android:text="号码"
+            android:textColor="#ccc"/>
+    </RelativeLayout>
+</RelativeLayout>

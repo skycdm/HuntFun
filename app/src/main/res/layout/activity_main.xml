@@ -42,6 +42,7 @@
                 android:drawableTop="@drawable/home_selector"
                 android:textColor="@drawable/font_color"
                 android:text="推 荐"
+                android:textSize="14sp"
                 />
             <RadioButton
                 style="@style/style"

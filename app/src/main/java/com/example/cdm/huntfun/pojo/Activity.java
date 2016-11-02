@@ -13,7 +13,7 @@ public class Activity implements Parcelable {
 	private String activityTheme;
 	private Timestamp activityBeginTime;
 	private Timestamp activityEndTime;
-	private Timestamp activityEndTimeSign;
+	private Timestamp activityCreatTime;
 	private String activityAddress;
 	private String activityDesc;
 	private String activityCare;
@@ -35,12 +35,69 @@ public class Activity implements Parcelable {
 		this.activityId = activityId;
 	}
 
-	public Activity(String activityLable, String activityTheme, Timestamp activityBeginTime, Timestamp activityEndTime, Timestamp activityEndTimeSign, String activityAddress, String activityDesc, String activityCare, String activityImgurl, Double activityCost, Integer activityMaxPeopleNumber, String activityTrip, String gather, String phone, Boolean isLiuDian, User user) {
+	public Activity(Integer activityId, String activityLable, String activityTheme, Timestamp activityBeginTime, Timestamp activityEndTime, Timestamp activityCreatTime, String activityAddress, String activityDesc, String activityCare, String activityImgurl, Double activityCost, Integer activityMaxPeopleNumber, String activityTrip, String gather, String phone, Boolean isLiuDian, User user) {
+		this.activityId = activityId;
 		this.activityLable = activityLable;
 		this.activityTheme = activityTheme;
 		this.activityBeginTime = activityBeginTime;
 		this.activityEndTime = activityEndTime;
-		this.activityEndTimeSign = activityEndTimeSign;
+		this.activityCreatTime = activityCreatTime;
+		this.activityAddress = activityAddress;
+		this.activityDesc = activityDesc;
+		this.activityCare = activityCare;
+		this.activityImgurl = activityImgurl;
+		this.activityCost = activityCost;
+		this.activityMaxPeopleNumber = activityMaxPeopleNumber;
+		this.activityTrip = activityTrip;
+		this.gather = gather;
+		this.phone = phone;
+		this.isLiuDian = isLiuDian;
+		this.user=user;
+	}
+
+	public Activity(String activityLable, String activityTheme, Timestamp activityBeginTime, Timestamp activityEndTime, Timestamp activityCreatTime, String activityAddress, String activityDesc, String activityCare, String activityImgurl, Double activityCost, Integer activityMaxPeopleNumber, String activityTrip, String gather, String phone, Boolean isLiuDian, User user) {
+		this.activityLable = activityLable;
+		this.activityTheme = activityTheme;
+		this.activityBeginTime = activityBeginTime;
+		this.activityEndTime = activityEndTime;
+		this.activityCreatTime = activityCreatTime;
+		this.activityAddress = activityAddress;
+		this.activityDesc = activityDesc;
+		this.activityCare = activityCare;
+		this.activityImgurl = activityImgurl;
+		this.activityCost = activityCost;
+		this.activityMaxPeopleNumber = activityMaxPeopleNumber;
+		this.activityTrip = activityTrip;
+		this.gather = gather;
+		this.phone = phone;
+		this.isLiuDian = isLiuDian;
+		this.user=user;
+	}
+
+	public Activity(Integer activityId, String activityLable, String activityTheme, Timestamp activityBeginTime, Timestamp activityEndTime, String activityAddress, String activityDesc, String activityCare, String activityImgurl, Double activityCost, Integer activityMaxPeopleNumber, String activityTrip, String gather, String phone, Boolean isLiuDian, User user) {
+		this.activityId = activityId;
+		this.activityLable = activityLable;
+		this.activityTheme = activityTheme;
+		this.activityBeginTime = activityBeginTime;
+		this.activityEndTime = activityEndTime;
+		this.activityAddress = activityAddress;
+		this.activityDesc = activityDesc;
+		this.activityCare = activityCare;
+		this.activityImgurl = activityImgurl;
+		this.activityCost = activityCost;
+		this.activityMaxPeopleNumber = activityMaxPeopleNumber;
+		this.activityTrip = activityTrip;
+		this.gather = gather;
+		this.phone = phone;
+		this.isLiuDian = isLiuDian;
+		this.user=user;
+	}
+
+	public Activity(String activityLable, String activityTheme, Timestamp activityBeginTime, Timestamp activityEndTime, String activityAddress, String activityDesc, String activityCare, String activityImgurl, Double activityCost, Integer activityMaxPeopleNumber, String activityTrip, String gather, String phone, Boolean isLiuDian, User user) {
+		this.activityLable = activityLable;
+		this.activityTheme = activityTheme;
+		this.activityBeginTime = activityBeginTime;
+		this.activityEndTime = activityEndTime;
 		this.activityAddress = activityAddress;
 		this.activityDesc = activityDesc;
 		this.activityCare = activityCare;
@@ -102,12 +159,12 @@ public class Activity implements Parcelable {
 		this.activityEndTime = activityEndTime;
 	}
 
-	public Timestamp getActivityEndTimeSign() {
-		return activityEndTimeSign;
+	public Timestamp getActivityCreatTime() {
+		return activityCreatTime;
 	}
 
-	public void setActivityEndTimeSign(Timestamp activityEndTimeSign) {
-		this.activityEndTimeSign = activityEndTimeSign;
+	public void setActivityCreatTime(Timestamp activityCreatTime) {
+		this.activityCreatTime = activityCreatTime;
 	}
 
 	public String getActivityAddress() {
@@ -235,7 +292,7 @@ public class Activity implements Parcelable {
 		dest.writeString(this.activityTheme);
 		dest.writeSerializable(this.activityBeginTime);
 		dest.writeSerializable(this.activityEndTime);
-		dest.writeSerializable(this.activityEndTimeSign);
+		dest.writeSerializable(this.activityCreatTime);
 		dest.writeString(this.activityAddress);
 		dest.writeString(this.activityDesc);
 		dest.writeString(this.activityCare);
@@ -259,7 +316,7 @@ public class Activity implements Parcelable {
 		this.activityTheme = in.readString();
 		this.activityBeginTime = (Timestamp) in.readSerializable();
 		this.activityEndTime = (Timestamp) in.readSerializable();
-		this.activityEndTimeSign = (Timestamp) in.readSerializable();
+		this.activityCreatTime = (Timestamp) in.readSerializable();
 		this.activityAddress = in.readString();
 		this.activityDesc = in.readString();
 		this.activityCare = in.readString();
@@ -288,4 +345,31 @@ public class Activity implements Parcelable {
 			return new Activity[size];
 		}
 	};
+
+	@Override
+	public String toString() {
+		return "Activity{" +
+				"activityId=" + activityId +
+				", activityLable='" + activityLable + '\'' +
+				", activityTheme='" + activityTheme + '\'' +
+				", activityBeginTime=" + activityBeginTime +
+				", activityEndTime=" + activityEndTime +
+				", activityCreatTime=" + activityCreatTime +
+				", activityAddress='" + activityAddress + '\'' +
+				", activityDesc='" + activityDesc + '\'' +
+				", activityCare='" + activityCare + '\'' +
+				", activityImgurl='" + activityImgurl + '\'' +
+				", activityCost=" + activityCost +
+				", activityMaxPeopleNumber=" + activityMaxPeopleNumber +
+				", activityTrip='" + activityTrip + '\'' +
+				", gather='" + gather + '\'' +
+				", phone='" + phone + '\'' +
+				", stateId=" + stateId +
+				", user=" + user +
+				", joiner=" + joiner +
+				", isLiuDian=" + isLiuDian +
+				", isHeavy=" + isHeavy +
+				", isSpecial=" + isSpecial +
+				'}';
+	}
 }

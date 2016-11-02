@@ -38,6 +38,7 @@
             android:text="打球"
             android:textSize="16sp"/>
         <TextView
+            android:id="@+id/tv_creattime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -57,7 +58,7 @@
         android:layout_marginTop="3dp"
         android:background="#E9E9EE"/>
 
-    <ScrollView
+    <com.example.cdm.huntfun.activity.ownview.ListenerForScrolView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -125,14 +126,19 @@
                     android:layout_marginTop="10dp"
                     android:text="不限"
                     android:textSize="16sp"/>
-                <ImageView
+                <GridView
+                    android:id="@+id/gv_joiner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:numColumns="auto_fit"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="5dp"
-                    android:src="@drawable/head"
-                    android:layout_below="@+id/tv_num_detail"/>
+                    android:layout_below="@+id/tv_num_detail"
+                    android:columnWidth="50dp"
+                    android:layout_toLeftOf="@+id/join_num">
+                </GridView>
                 <TextView
+                    android:id="@+id/join_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -248,7 +254,7 @@
                 <TextView
                     android:id="@+id/tv_care"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_below="@+id/tv_detail"
                     android:text="注意事项："
@@ -286,6 +292,7 @@
                     android:textSize="15sp"
                     android:textColor="#686B6E"/>
                 <TextView
+                    android:id="@+id/user_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/user_name"
@@ -295,7 +302,7 @@
                     android:textColor="#ccc"/>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/bottom"
+                android:id="@+id/eval"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
@@ -339,21 +346,121 @@
                     android:text="无"
                     android:textSize="14sp"/>
             </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_exit"
+            <RelativeLayout
+                android:id="@+id/rl_eva"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="#fff"
+                android:layout_below="@+id/eval">
+                <TextView
+                    android:id="@+id/tv_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="参与者评论"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+                <ImageView
+                    android:id="@+id/eva_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/more_right"/>
+            </RelativeLayout>
+            <com.example.cdm.huntfun.util.ListViewForScrollView
+                android:id="@+id/lv_eva"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_below="@+id/bottom"
-                android:text="退出活动"
-                android:background="#e02f2f"
-                android:textColor="#fff"
-                android:padding="8dp"
-                android:textSize="16sp"
-                android:gravity="center"/>
+                android:layout_below="@+id/rl_eva"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/layout_back_border">
+
+            </com.example.cdm.huntfun.util.ListViewForScrollView>
         </RelativeLayout>
-    </ScrollView>
+    </com.example.cdm.huntfun.activity.ownview.ListenerForScrolView>
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_eva_back">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back"/>
+        <TextView
+            android:id="@+id/fb_dt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/act_exit_back"
+            android:text="发表动态"
+            android:textSize="13sp"
+            android:textColor="#494848"/>
+        <TextView
+            android:id="@+id/tc_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/fb_dt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="9dp"
+            android:background="@drawable/act_exit_back"
+            android:text="退出活动"
+            android:textSize="13sp"
+            android:textColor="#494848"/>
+        <TextView
+            android:id="@+id/tv_evaluate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="发表评论"
+            android:textSize="14sp"
+            android:textColor="#fff"
+            android:background="@drawable/act_detail_bottom_eva"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/bottom1"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_above="@+id/bottom"
+        android:visibility="gone"
+        android:background="@drawable/bottom_eva_back">
+        <EditText
+            android:id="@+id/edt_eva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="输入评论内容"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:background="@null"
+            android:textColorHint="#ccc"
+            android:textColor="#5c5b5b"/>
+        <TextView
+            android:id="@+id/tv_evaluate_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="发表"
+            android:textSize="14sp"
+            android:textColor="#fff"
+            android:background="@drawable/act_detail_bottom_eva"/>
+    </RelativeLayout>
 </RelativeLayout>

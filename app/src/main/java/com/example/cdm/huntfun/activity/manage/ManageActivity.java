@@ -133,4 +133,18 @@ public class ManageActivity extends AppCompatActivity implements View.OnClickLis
         viewPager.setCurrentItem(desTab, true);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int index=getIntent().getIntExtra("index",0);
+        if (index==2){
+            changeView(1);//选中第二项
+            btn_publish_frg.setBackgroundResource(R.drawable.background);
+            btn_jion_frg.setBackground(null);
+        }if (index==1){
+            changeView(0);//选中第二项
+            btn_publish_frg.setBackgroundResource(R.drawable.background);
+            btn_jion_frg.setBackground(null);
+        }
+    }
 }

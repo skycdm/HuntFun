@@ -7,7 +7,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="39dp"
         android:background="#17cdf5">
 
         <!--自定义控件-->tex<ImageView
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="填写预约信息"
-            android:textSize="25sp"
+            android:textSize="17sp"
             android:textColor="#fff"
             android:layout_marginLeft="35dp"
             />
@@ -57,7 +57,7 @@
                     android:layout_marginTop="25dp"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#696666"
                     android:text="   体验日期"/>
                 <TextView
@@ -67,7 +67,7 @@
                     android:textColor="#696767"
                     android:text="2016-10-11"
                     android:layout_marginTop="25dp"
-                    android:layout_marginLeft="240dp"
+                    android:layout_marginLeft="200dp"
                     />
             </RelativeLayout>
             <View
@@ -85,12 +85,12 @@
                     android:id="@+id/tv_theme"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#696666"
                     android:text="   预约数量"/>
                 <Button
                     android:id="@+id/cart_item_jian"
-                    android:layout_marginLeft="210dp"
+                    android:layout_marginLeft="185dp"
                     android:focusable="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:text="1"
                     android:textColor="#e41515"
-                    android:layout_marginLeft="300dp"
+                    android:layout_marginLeft="270dp"
 
                     />
                 <Button
@@ -118,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:layout_marginLeft="320dp"
+                    android:layout_marginLeft="285dp"
                     android:background="@null"
                     android:textColor="#0157D3"
                     android:textSize="20sp"
@@ -139,7 +139,7 @@
                     android:layout_marginTop="25dp"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#696666"
                     android:text="   联系人信息"/>
             </RelativeLayout>
@@ -153,16 +153,27 @@
                     android:layout_marginTop="18dp"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#949090"
                     android:text="   姓名"/>
-                <EditText
+                <RelativeLayout
+                    android:layout_marginTop="15dp"
+                    android:background="#5fc3e4"
                     android:layout_marginLeft="100dp"
+                    android:layout_columnWeight="4"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                <EditText
                     android:id="@+id/et_name"
                     android:hint="您的姓名"
-                    android:textColorHint="#c1bcbc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:background="#fff"
+                    android:singleLine="true"
+                    android:layout_centerInParent="true"
+                    android:textColorHint="#d7d3d3"
+                    android:textColor="#000"
+                    android:layout_width="257dp"
+                    android:layout_height="28dp" />
+                </RelativeLayout>
             </RelativeLayout>
 
             <RelativeLayout
@@ -174,17 +185,27 @@
                     android:layout_marginTop="18dp"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#949090"
                     android:text="   手机号"/>
-                <EditText
+                <RelativeLayout
+                    android:layout_marginTop="15dp"
+                    android:background="#5fc3e4"
                     android:layout_marginLeft="100dp"
-                    android:id="@+id/et_phoneNumber"
-                    android:hint="接受预约的手机号"
-                    android:textColorHint="#c1bcbc"
+                    android:layout_columnWeight="4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
+                    android:layout_height="30dp">
+                <EditText
+                    android:id="@+id/et_phoneNumber"
+                    android:singleLine="true"
+                    android:layout_centerInParent="true"
+                    android:hint="接受预约的手机号"
+                    android:background="#fff"
+                    android:textColor="#000"
+                    android:textColorHint="#d9d4d4"
+                    android:layout_width="257dp"
+                    android:layout_height="28dp" />
+                </RelativeLayout>
             </RelativeLayout>
 
 
@@ -209,16 +230,18 @@
             android:id="@+id/tv_order_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textColor="#fff"
             android:text=" ￥ 120"/>
 
-        <TextView
+        <Button
+            android:id="@+id/bt_commit"
+            android:background="@drawable/set_li_ji"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="37dp"
             android:text=" 提 交 预 约 "
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="#fff"
-            android:layout_marginLeft="180dp"/>
+            android:layout_marginLeft="155dp"/>
     </android.support.v7.widget.Toolbar>
 </RelativeLayout>

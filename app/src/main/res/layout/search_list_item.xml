@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_search_item"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_search_list_theme"
+        android:layout_width="193dp"
+        android:layout_height="125dp"
+        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaa"
+        android:textColor="#5e5d5d"
+        android:textSize="16sp"
+       android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_search_item"
+      />
+
+    <TextView
+        android:id="@+id/tv_search_list_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" ￥20"
+        android:textColor="#ed1111"
+        android:textSize="20sp"
+        android:layout_marginTop="84dp"
+        android:layout_marginLeft="157dp"
+        android:layout_toRightOf="@id/iv_search_item"
+        />
+    <View
+        style="@style/bg_line"
+        android:layout_marginTop="10dp"
+        android:id="@+id/id_prod_list_sort_line1"
+        android:layout_below="@id/tv_search_list_money"/>
+
+</RelativeLayout>

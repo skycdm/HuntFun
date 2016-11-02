@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.example.cdm.huntfun.next.UserActivity">
+   <RelativeLayout
+       android:id="@+id/rl_user_touming"
+       android:layout_width="match_parent"
+       android:layout_height="280dp"
+       android:background="@drawable/act2">
+      <ImageView
+          android:id="@+id/iv_back2"
+          android:layout_marginLeft="15dp"
+          android:layout_marginTop="10dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/white"/>
+      <ImageView
+          android:id="@+id/iv_user_touxiang"
+          android:layout_width="100dp"
+          android:layout_height="100dp"
+          android:src="@mipmap/ic_launcher"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="30dp"/>
+      <TextView
+          android:id="@+id/tv_user_nick"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="一个傻逼"
+          android:textSize="30sp"
+          android:textColor="#000"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="140dp"/>
+
+      <ImageButton
+          android:id="@+id/ib_guanzhu"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@null"
+          android:layout_marginTop="200dp"
+          android:layout_marginLeft="68dp"
+         />
+      <Button
+          android:layout_width="100dp"
+          android:layout_height="40dp"
+          android:text="联系猎人"
+          android:textSize="19sp"
+          android:textColor="#f7f4f4"
+          android:layout_marginTop="200dp"
+          android:layout_marginLeft="210dp"
+          android:background="#bebbbb"
+          />
+      <TextView
+          android:id="@+id/tv_fensi1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="粉丝数："
+          android:textColor="#918d8d"
+          android:textSize="21sp"
+          android:layout_alignParentBottom="true"
+          android:layout_marginLeft="132dp"/>
+      <TextView
+          android:id="@+id/tv_fensi"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="12"
+          android:textColor="#dc1111"
+          android:textSize="21sp"
+          android:layout_toRightOf="@id/tv_fensi1"
+          android:layout_alignParentBottom="true"/>
+
+   </RelativeLayout>
+
+   <TextView
+       android:id="@+id/tv_user_desc"
+       android:layout_below="@id/rl_user_touming"
+       android:layout_width="300dp"
+       android:layout_height="match_parent"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="30dp"
+       android:text="Life of is a dralling adventrue or nothing at all"
+       android:textSize="20sp"
+       android:textColor="#a7a4a4"/>
+
+</RelativeLayout>

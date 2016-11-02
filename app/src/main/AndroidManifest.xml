@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".application.Myapplication"
@@ -12,9 +14,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".MineActivity.FaBuActivity" />
+        <activity android:name=".MineActivity.SystemSet" />
+        <activity android:name=".MineActivity.MySport" />
+        <activity android:name=".MineActivity.Phone" />
+        <activity android:name=".MineActivity.AddActivity" />
+        <activity android:name=".MineActivity.ChangeName" />
+        <activity android:name=".MineActivity.ChangeSport" />
+        <activity android:name=".MineActivity.CollectionActivity" />
+        <activity android:name=".MineActivity.Order_say_Activity" />
+        <activity android:name=".MineActivity.OrderActivity" />
+        <activity android:name=".MineActivity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,13 +32,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".activity.PublishActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".next.Detail"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".next.OrderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".DatePickActivity"
@@ -51,14 +58,56 @@
         <activity
             android:name=".activity.manage.ManageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.manage.JoinExitActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".activity.manage.JoinEvaluateActivity"
+        <activity
+            android:name=".activity.manage.JoinExitActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.manage.PublishExitActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".activity.manage.PublishEvaluateActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".activity.manage.JoinEvaluateActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.manage.PublishExitActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.manage.PublishEvaluateActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.Detail"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.OrderActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.SearchActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.Search_DetailActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.UserActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.MoreActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.CountActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".next.SearchBarActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.AddDynamicActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/customTheme" />
+        <activity android:name=".activity.ImagePagerActivity" />
+        <activity android:name=".MineActivity.SingleInfo" />
+        <activity android:name=".activity.fragment.sqlitedraft.SqliteActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".activity.manage.child.JoinersActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".activity.manage.child.EvaluateActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 
 </manifest>

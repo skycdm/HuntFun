@@ -1,5 +1,129 @@
 [
     {
+        "outputFile": "D:\\Androidstudio\\project\\HuntFun1\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-de\\values-de.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 80,
+                    "endOffset": 131
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\project\\HuntFun1\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 80,
+                        "endOffset": 131
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 136,
+                    "endColumn": 67,
+                    "endOffset": 199
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\project\\HuntFun1\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 136,
+                        "endColumn": 67,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 204,
+                    "endColumn": 86,
+                    "endOffset": 286
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\project\\HuntFun1\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 86,
+                        "endOffset": 286
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\aa\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-de\\values-de.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 80,
+                    "endOffset": 131
+                },
+                "from": {
+                    "file": "D:\\aa\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 80,
+                        "endOffset": 131
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 136,
+                    "endColumn": 67,
+                    "endOffset": 199
+                },
+                "from": {
+                    "file": "D:\\aa\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 136,
+                        "endColumn": 67,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 204,
+                    "endColumn": 86,
+                    "endOffset": 286
+                },
+                "from": {
+                    "file": "D:\\aa\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 86,
+                        "endOffset": 286
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "D:\\GaoBO\\Group2Project\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-de\\values-de.xml",
         "map": [
             {
@@ -50,6 +174,192 @@
                 },
                 "from": {
                     "file": "D:\\GaoBO\\Group2Project\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 86,
+                        "endOffset": 286
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "E:\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-de\\values-de.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 80,
+                    "endOffset": 131
+                },
+                "from": {
+                    "file": "E:\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 80,
+                        "endOffset": 131
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 136,
+                    "endColumn": 67,
+                    "endOffset": 199
+                },
+                "from": {
+                    "file": "E:\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 136,
+                        "endColumn": 67,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 204,
+                    "endColumn": 86,
+                    "endOffset": 286
+                },
+                "from": {
+                    "file": "E:\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 86,
+                        "endOffset": 286
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Androidstudio\\project\\huntfun3\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-de\\values-de.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 80,
+                    "endOffset": 131
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\project\\huntfun3\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 80,
+                        "endOffset": 131
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 136,
+                    "endColumn": 67,
+                    "endOffset": 199
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\project\\huntfun3\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 136,
+                        "endColumn": 67,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 204,
+                    "endColumn": 86,
+                    "endOffset": 286
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\project\\huntfun3\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 86,
+                        "endOffset": 286
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Androidstudio\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-de\\values-de.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 80,
+                    "endOffset": 131
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 80,
+                        "endOffset": 131
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 136,
+                    "endColumn": 67,
+                    "endOffset": 199
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 136,
+                        "endColumn": 67,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 204,
+                    "endColumn": 86,
+                    "endOffset": 286
+                },
+                "from": {
+                    "file": "D:\\Androidstudio\\HuntFun\\libs\\pulltorefresh\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

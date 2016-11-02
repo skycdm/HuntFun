@@ -4,4 +4,5 @@
     <solid android:color="#fafaf8"/>
     <!-- 边框色 -->
     <stroke android:width="0.5dip" android:color="#fadd03" />
+    <corners android:radius="9dip"/>
 </shape>

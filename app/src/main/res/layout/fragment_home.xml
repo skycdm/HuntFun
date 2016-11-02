@@ -4,29 +4,29 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#edeaea"
+    android:background="#f2f0f0"
     android:weightSum="1">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="40dp"
         android:background="#17cdf5">
-
         <!--自定义控件-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="猎趣"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:layout_gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-苏州-"
-            android:textSize="25sp"
+            android:textSize="17sp"
             android:layout_gravity="left"
             />
         <ImageView
+            android:id="@+id/iv_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/search"
@@ -36,34 +36,140 @@
     </android.support.v7.widget.Toolbar>
 
 
-
-    <com.jude.rollviewpager.RollPagerView
-        android:id="@+id/roll_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:rollviewpager_play_delay="3000"/>
-
-
-
-    <TextView
-        android:layout_marginTop="15dp"
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.jude.rollviewpager.RollPagerView
+                android:id="@+id/roll_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:rollviewpager_play_delay="3000"/>
+        </RelativeLayout>
+        <RelativeLayout
+        android:id="@+id/rel1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  重 磅 推 荐"
-        android:textSize="18sp"
-        android:textColor="#747171"/>
+            android:layout_below="@id/rel">
 
-    <com.example.cdm.huntfun.application.HVListview
-        android:id="@+id/hv_list"
-        android:background="#faf9f8"
-        android:paddingTop="10dp"
-        android:fastScrollEnabled="true"
-        android:fadingEdgeLength="0.0sp"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:drawSelectorOnTop="false"
-        android:cacheColorHint="@null"
-        android:dividerHeight="1.0dip">
-    </com.example.cdm.huntfun.application.HVListview>
+        <TextView
+            android:id="@+id/zhongbang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text=" 重 磅 推 荐"
+            android:textSize="15sp"
+            android:textColor="#393838"/>
+            <TextView
+                android:id="@+id/tv_more1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更多 >"
+                android:textSize="15sp"
+                android:textColor="#b6b4b4"
+                android:layout_marginTop="7dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+               />
 
+        <com.example.cdm.huntfun.application.HVListview
+            android:layout_below="@id/zhongbang"
+            android:id="@+id/hv_list"
+            android:background="#faf9f8"
+            android:paddingTop="10dp"
+            android:fastScrollEnabled="true"
+            android:fadingEdgeLength="0.0sp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:drawSelectorOnTop="false"
+            android:cacheColorHint="@null"
+            android:dividerHeight="1.0dip">
+        </com.example.cdm.huntfun.application.HVListview>
+
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/rel2"
+            android:layout_below="@id/rel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 特 色 活 动"
+                android:textSize="15sp"
+                android:textColor="#393838"/>
+            <TextView
+                android:id="@+id/tv_more2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更多 >"
+                android:textSize="15sp"
+                android:textColor="#b6b4b4"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+               />
+            <com.example.cdm.huntfun.application.HVListview
+                android:layout_below="@id/tse"
+                android:id="@+id/hv_list1"
+                android:background="#faf9f8"
+                android:paddingTop="10dp"
+                android:fastScrollEnabled="true"
+                android:fadingEdgeLength="0.0sp"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:drawSelectorOnTop="false"
+                android:cacheColorHint="@null"
+                android:dividerHeight="1.0dip">
+            </com.example.cdm.huntfun.application.HVListview>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/rel3"
+            android:layout_below="@id/rel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/liji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 立 即 体 验 "
+                android:textSize="15sp"
+                android:textColor="#393838"/>
+            <TextView
+                android:id="@+id/tv_more3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更多 >"
+                android:textSize="15sp"
+                android:textColor="#b6b4b4"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp" />
+            <com.example.cdm.huntfun.application.HVListview
+                android:layout_below="@id/liji"
+                android:id="@+id/hv_list2"
+                android:background="#faf9f8"
+                android:paddingTop="10dp"
+                android:fastScrollEnabled="true"
+                android:fadingEdgeLength="0.0sp"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:drawSelectorOnTop="false"
+                android:cacheColorHint="@null"
+                android:dividerHeight="1.0dip">
+            </com.example.cdm.huntfun.application.HVListview>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>
 </LinearLayout>

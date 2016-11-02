@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.example.cdm.huntfun.MainActivity;
 import com.example.cdm.huntfun.R;
 import com.example.cdm.huntfun.activity.PublishActivity;
+import com.example.cdm.huntfun.activity.fragment.sqlitedraft.SqliteActivity;
 import com.example.cdm.huntfun.activity.manage.ManageActivity;
 
 
@@ -22,6 +23,7 @@ public class Fragment_tuijian extends Fragment {
 
     private RelativeLayout rel_publish;
     private RelativeLayout rel_manage;
+    private RelativeLayout ccc;
 
     @Nullable
     @Override
@@ -43,6 +45,15 @@ public class Fragment_tuijian extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intentMan=new Intent(getActivity(), ManageActivity.class);
+                startActivity(intentMan);
+            }
+        });
+
+        ccc = ((RelativeLayout) view.findViewById(R.id.ccc));
+        ccc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMan=new Intent(getActivity(), SqliteActivity.class);
                 startActivity(intentMan);
             }
         });

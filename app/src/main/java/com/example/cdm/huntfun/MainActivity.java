@@ -3,19 +3,25 @@ package com.example.cdm.huntfun;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.cdm.huntfun.MineActivity.CollectionActivity;
+import com.example.cdm.huntfun.MineActivity.MySport;
+import com.example.cdm.huntfun.MineActivity.OrderActivity;
+import com.example.cdm.huntfun.MineActivity.Order_say_Activity;
 import com.example.cdm.huntfun.fragment.Fragment_home;
 import com.example.cdm.huntfun.fragment.Fragment_mine;
 import com.example.cdm.huntfun.fragment.Fragment_tuijian;
 import com.example.cdm.huntfun.fragment.Fragment_xiaoxi;
+import com.example.cdm.huntfun.pojo.SysOut;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SysOut.getInstance().addActivity(this);
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         initview();
         initdate();
 
     }
-    /*public void my_judge_click(View view){
+    public void my_judge_click(View view){
         Intent intent = new Intent(MainActivity.this,Order_say_Activity.class);
         startActivity(intent);
     }
@@ -47,8 +54,11 @@ public class MainActivity extends AppCompatActivity {
     public void order_click(View view){
         Intent intent = new Intent(MainActivity.this,OrderActivity.class);
         startActivity(intent);
-    }*/
-
+    }
+    public void is_order_click(View view){
+        Intent intent = new Intent(MainActivity.this, MySport.class);
+        startActivity(intent);
+    }
     private void initview() {
 
         list_view = ((ListView) findViewById(R.id.list_view_drawer));
@@ -61,10 +71,21 @@ public class MainActivity extends AppCompatActivity {
         list_view.setAdapter(new ArrayAdapter(this,R.layout.drawer_layout,
                 R.id.text_view,new String[]{"item1","item2","item3"}
         ));
+        Intent intent = getIntent();
 
+        String tag = intent.getStringExtra("tag");
+        if(tag!=null){
+            if(tag.equals("t")){
+                ((RadioButton) findViewById(R.id.shouye)).setChecked(false);
+                ((RadioButton) findViewById(R.id.mine)).setChecked(true);
+                fragment_(new Fragment_mine());
+            }
+        }else {
+            fragment_(new Fragment_home());
+        }
         final List<Fragment> list= new ArrayList<Fragment>();
         list.add(new Fragment_home() );
-        fragment_(new Fragment_home());
+
         radio_check.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -124,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("name","jack");
         fragment.setArguments(bundle);
         fg.replace(R.id.fram,fragment);
-        fg.addToBackStack(null);
+//        fg.addToBackStack(null);
         fg.commit();
     }
 }

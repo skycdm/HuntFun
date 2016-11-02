@@ -26,6 +26,7 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
     private Button btn_publish_frg;
 
     private Button btnPublish;
+    private Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,9 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
         btn_publish_frg.setOnClickListener(this);
 
         btnPublish = ((Button) findViewById(R.id.btn_publish));
+        btnSave = ((Button) findViewById(R.id.btn_save));
         btnPublish.setOnClickListener(this);
+        btnSave.setOnClickListener(this);
 
         ((ImageView) findViewById(R.id.iv_bank)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,14 +73,19 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_publish_frg:
                 newIndex=0;//选中第一项
                 btnPublish.setVisibility(View.VISIBLE);
+                btnSave.setVisibility(View.GONE);
                 break;
 
             case R.id.btn_caogao_frg:
                 newIndex=1;//选中第二项
                 btnPublish.setVisibility(View.GONE);
+                btnSave.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_publish:
                 fragmentPublish.publis();
+                break;
+            case R.id.btn_save:
+                fragmentCaogao.savedb();
                 break;
         }
         switchFragment();
