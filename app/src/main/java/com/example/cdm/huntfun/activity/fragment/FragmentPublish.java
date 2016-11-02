@@ -34,7 +34,9 @@ import com.example.cdm.huntfun.util.NetUtil;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
+import org.xutils.common.util.DensityUtil;
 import org.xutils.http.RequestParams;
+import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 import java.io.File;
@@ -165,6 +167,8 @@ public class FragmentPublish extends Fragment {
     String items[] = {"相册选择", "拍照"};
     public static final int SELECT_PIC = 11;
 
+    public Boolean chooseImg=false;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -178,6 +182,15 @@ public class FragmentPublish extends Fragment {
         }
 
         fromCaogao();
+
+        ImageOptions imageOptions = new ImageOptions.Builder()
+                .setSize(DensityUtil.dip2px(360), DensityUtil.dip2px(180))//图片大小
+                .setCrop(true)// 如果ImageView的大小不是定义为wrap_content, 不要crop.
+                .setLoadingDrawableId(R.drawable.loadimg)//加载中默认显示图片
+                .setUseMemCache(true)//设置使用缓存
+                .setFailureDrawableId(R.drawable.ee)//加载失败后默认显示图片
+                .build();
+        x.image().bind(ivFm,NetUtil.url+"image/ee.png");
         return view;
     }
 
@@ -293,6 +306,7 @@ public class FragmentPublish extends Fragment {
         ivFm.setImageBitmap(bitmap);//iv显示图片
         saveImage(bitmap);//保存文件
         //uploadImage();//上传服务器
+        chooseImg=true;
 
     }
 
@@ -395,7 +409,7 @@ public class FragmentPublish extends Fragment {
     public void getData() {
         Timestamp activityBeginTime = null;
         Timestamp activityEndTime = null;
-        Timestamp activityEndTimeSign = null;
+        String activityImgurl = null;
         System.out.println("initData");
         String activityLable = edtActivityTheme.getText().toString();
         String activityTheme = edtActivityTitle.getText().toString();
@@ -418,7 +432,12 @@ public class FragmentPublish extends Fragment {
         String activityAddress = edtActivityAddress.getText().toString();
         String activityDesc = edtDetail.getText().toString();
         String activityCare = edtCare.getText().toString();
-        String activityImgurl="image/"+file.getName();
+        if (chooseImg) {
+            activityImgurl = "image/" + file.getName();
+        }else {
+            activityImgurl = "image/ee.png";
+        }
+
         Double activityCost=Double.parseDouble((t3.getText().toString()).equals("未填写")?"0":t3.getText().toString());
         Integer activityMaxPeopleNumber=Integer.parseInt((t4.getText().toString()).equals("未填写")?"0":t4.getText().toString());
         String activityTrip=t2.getText().toString();
@@ -436,7 +455,9 @@ public class FragmentPublish extends Fragment {
 
     public void publis() {
         getData();
-        uploadImage();//上传服务器
+        if (chooseImg) {
+            uploadImage();//上传服务器
+        }
         if (activity != null) {
             RequestParams requestParams = new RequestParams(NetUtil.url+"InsertActivityServlet");
             Gson gson = new Gson();

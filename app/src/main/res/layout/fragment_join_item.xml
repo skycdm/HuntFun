@@ -27,7 +27,6 @@
             android:layout_toRightOf="@+id/tv_shu"
             android:layout_alignTop="@+id/tv_shu"
             android:layout_marginLeft="5dp"
-            android:text="时间：2016年10月14日-2016年10月16日"
             android:textColor="#fff"
             android:textSize="12sp"/>
         <TextView
@@ -37,7 +36,6 @@
             android:layout_toRightOf="@+id/tv_shu"
             android:layout_alignBottom="@+id/tv_shu"
             android:layout_marginLeft="5dp"
-            android:text="地点：重庆市，万州区"
             android:textColor="#fff"
             android:textSize="12sp"/>
         <TextView
@@ -47,7 +45,6 @@
             android:layout_alignBottom="@+id/tv_shu"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
-            android:text="报名人数：1"
             android:textColor="#fff"
             android:textSize="12sp"/>
         <TextView
@@ -58,8 +55,6 @@
             android:layout_alignLeft="@+id/tv_shu"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:background="#f0f"
-            android:text="活动进行中"
             android:textSize="12sp"
             android:textColor="#fff"/>
         <TextView
@@ -69,7 +64,6 @@
             android:layout_above="@+id/tv_shu"
             android:layout_alignLeft="@+id/tv_shu"
             android:layout_marginBottom="5dp"
-            android:text="活动名称"
             android:textSize="16sp"
             android:textColor="#fff"/>
     </RelativeLayout>

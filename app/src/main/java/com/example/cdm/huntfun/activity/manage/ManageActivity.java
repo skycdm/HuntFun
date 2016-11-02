@@ -1,5 +1,6 @@
 package com.example.cdm.huntfun.activity.manage;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.cdm.huntfun.MainActivity;
 import com.example.cdm.huntfun.R;
 import com.example.cdm.huntfun.activity.manage.fragment.FragmentJoin;
 import com.example.cdm.huntfun.activity.manage.fragment.FragmentPublish;
@@ -88,6 +90,7 @@ public class ManageActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 finish();
+                Intent intent=new Intent(getApplicationContext(), MainActivity.class);
             }
         });
     }

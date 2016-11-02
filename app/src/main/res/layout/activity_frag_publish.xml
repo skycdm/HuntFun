@@ -229,8 +229,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_below="@+id/tv_fm"
-                    android:src="@drawable/activity_fm"/>
+                    android:layout_below="@+id/tv_fm"/>
             </RelativeLayout>
 
             <RelativeLayout

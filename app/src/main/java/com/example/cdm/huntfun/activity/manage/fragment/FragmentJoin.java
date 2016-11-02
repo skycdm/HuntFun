@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -68,6 +67,7 @@ public class FragmentJoin extends BaseFragment {
 
 
     String resultPage="";
+    private TextView tv_state;
 
     @Nullable
     @Override
@@ -86,6 +86,8 @@ public class FragmentJoin extends BaseFragment {
         progressbar = ((ProgressBar) view.findViewById(R.id.progressbar));
 
         lvJoinAct.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+
+        tv_state = ((TextView) view.findViewById(R.id.id_prod_list_sort_right));
 
         return view;
     }
@@ -148,10 +150,10 @@ public class FragmentJoin extends BaseFragment {
     @Override
     public void initData() {
         getData();
-        popContents.add("未进行");
+        popContents.add("未开始");
         popContents.add("进行中");
         popContents.add("已结束");
-        popContents.add("全部状态");
+        popContents.add("全部活动");
     }
 
     public void getData(){
@@ -208,9 +210,9 @@ public class FragmentJoin extends BaseFragment {
                                 ImageOptions imageOptions = new ImageOptions.Builder()
                                         .setSize(DensityUtil.dip2px(360), DensityUtil.dip2px(180))//图片大小
                                         .setCrop(true)// 如果ImageView的大小不是定义为wrap_content, 不要crop.
-                                        .setLoadingDrawableId(R.mipmap.ic_launcher)//加载中默认显示图片
+                                        .setLoadingDrawableId(R.drawable.loadimg)//加载中默认显示图片
                                         .setUseMemCache(true)//设置使用缓存
-                                        .setFailureDrawableId(R.drawable.activity_fm)//加载失败后默认显示图片
+                                        .setFailureDrawableId(R.drawable.loadimgfaile)//加载失败后默认显示图片
                                         .build();
                                 x.image().bind(act_fm, NetUtil.url + activity.getActivityImgurl(), imageOptions);
 
@@ -283,18 +285,22 @@ public class FragmentJoin extends BaseFragment {
                     orderFlag=1;
                     flag=false;
                     pageNo=1;
+                    tv_state.setText("未开始");
                 }else if (position==1){
                     orderFlag=2;
                     flag=false;
                     pageNo=1;
+                    tv_state.setText("进行中");
                 }else if (position==2){
                     orderFlag=3;
                     flag=false;
                     pageNo=1;
+                    tv_state.setText("已结束");
                 }else if (position==3){
                     orderFlag=0;
                     flag=false;
                     pageNo=1;
+                    tv_state.setText("全部活动");
                 }
                 getData();
             }

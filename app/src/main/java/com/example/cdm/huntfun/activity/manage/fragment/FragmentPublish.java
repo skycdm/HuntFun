@@ -129,7 +129,7 @@ public class FragmentPublish extends BaseFragment {
                     }, 1000);
                 }
                 if (resultPage.equals("false")) {
-                    //Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"已加载全部数据",Toast.LENGTH_SHORT).show();
                     lvJoinAct.postDelayed(new Runnable() {
 
                         @Override
@@ -206,9 +206,9 @@ public class FragmentPublish extends BaseFragment {
                                 ImageOptions imageOptions = new ImageOptions.Builder()
                                         .setSize(DensityUtil.dip2px(360), DensityUtil.dip2px(180))//图片大小
                                         .setCrop(true)// 如果ImageView的大小不是定义为wrap_content, 不要crop.
-                                        .setLoadingDrawableId(R.mipmap.ic_launcher)//加载中默认显示图片
+                                        .setLoadingDrawableId(R.drawable.loadimg)//加载中默认显示图片
                                         .setUseMemCache(true)//设置使用缓存
-                                        .setFailureDrawableId(R.drawable.activity_fm)//加载失败后默认显示图片
+                                        .setFailureDrawableId(R.drawable.loadimgfaile)//加载失败后默认显示图片
                                         .build();
                                 x.image().bind(act_fm, NetUtil.url + activity.getActivityImgurl(), imageOptions);
 
